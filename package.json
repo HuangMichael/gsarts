@@ -1,7 +1,7 @@
 {
-  "name": "eam",
+  "name": "GSARTS",
   "version": "1.0.0",
-  "description": "eam frontend",
+  "description": "gs arts frontend",
   "author": "huangbin <huangbin10025@163.com>",
   "license": "MIT",
   "scripts": {

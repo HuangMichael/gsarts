@@ -30,73 +30,72 @@ const routers = new VueRouter({
         {
             path: '/',
             component: Home,
-            name: '统计分析',
+            name: '系统管理',
             iconCls: 'fa fa-bar-chart',
             children: [
-                {path: '/portal', component: ECharts, name: '我的门户'},
-                {path: '/unitsStat', component: ECharts, name: '外委单位统计'},
-                {path: '/mapView', component: MapView, name: '高德地图'}
+                {path: '/unit', component: Table, name: '单位管理'},
+                {path: '/user', component: Table, name: '用户管理'},
+                {path: '/role', component: Table, name: '角色管理'},
+                {path: '/role', component: Table, name: '注册审核'}
             ]
         },
         {
             path: '/',
             component: Home,
-            name: '系统管理',
+            name: '站点管理',
             iconCls: 'fa fa-bar-chart',
             children: [
-                {path: '/person', component: Person, name: '人员信息'},
-                {path: '/user', component: User, name: '用户信息'},
-                {path: '/role', component: Role, name: '角色信息'},
-                {path: '/auth', component: User, name: '角色授权'},
-                {path: '/resource', component: User, name: '资源信息'}
+                {path: '/person', component: Person, name: '栏目管理'},
+                {path: '/user', component: User, name: '弹窗飘窗管理'},
+                {path: '/role', component: Role, name: '回收站'},
+                {path: '/auth', component: User, name: '建言信息管理'},
+                {path: '/resource', component: ECharts, name: '发稿统计'}
             ]
         },
         {
-            path: '/eqManage',
+            path: '/member',
             component: Home,
-            name: '设备管理',
+            name: '会员中心',
             iconCls: 'el-icon-message',//图标样式class
             children: [
-                {path: '/equipments', component: Table, name: '设备信息'},
-                {path: '/location', component: Table, name: '位置信息'}
+                {path: '/profile', component: Table, name: '会员简介'},
+                {path: '/location', component: Table, name: '会员作品'}
             ]
         },
         {
             path: '/baseData',
             component: Home,
-            name: '基础数据',
+            name: '网上展馆',
             iconCls: 'fa fa-id-card-o',
             children: [
-                {path: '/classifications', component: Table, name: '设备分类信息'},
-                {path: '/units', component: Table, name: '外委单位信息'}
+                {path: '/author', component: Table, name: '展馆作者'},
+                {path: '/arts', component: Table, name: '展馆作品'}
             ]
         },
 
         {
-            path: '/maintain',
+            path: '/dispatch',
             component: Home,
-            name: '维修管理',
+            name: '审核发布',
             iconCls: 'fa fa-id-card-o',
             children: [
-                {path: '/reportCart', component: Table, name: '报修车信息'},
-                {path: '/reportBill', component: Table, name: '报修单查询'},
-                {path: '/dispatcher', component: Table, name: '调度台信息'},
-                {path: '/maintainBill', component: Table, name: '维修单信息'},
-            ]
-        },
-        {
-            path: '/budget',
-            component: Home,
-            name: '采购管理',
-            iconCls: 'fa fa-address-card',
-            // leaf: true,//只有一个节点
-            children: [
-                {path: '/apply', component: Table, name: '采购申请'},
-                {path: '/ecApply', component: Table, name: '易耗品采购申请'},
-                {path: '/buyApply', component: Table, name: '设备新置申请'},
-                {path: '/updateApply', component: Table, name: '设备更新申请'}
+                {path: '/firstAudit', component: Table, name: '初审列表'},
+                {path: '/secondAudit', component: Table, name: '复审列表'},
+                {path: '/dispatchList', component: Table, name: '发布列表'},
             ]
         }
+        // {
+        //     path: '/content',
+        //     component: Home,
+        //     name: '内容管理',
+        //     iconCls: 'fa fa-address-card',
+        //     children: [
+        //         {path: '/college', component: Table, name: '采购申请'},
+        //         {path: '/ecApply', component: Table, name: '易耗品采购申请'},
+        //         {path: '/buyApply', component: Table, name: '设备新置申请'},
+        //         {path: '/updateApply', component: Table, name: '设备更新申请'}
+        //     ]
+        // }
     ]
 })
 

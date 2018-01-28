@@ -90,7 +90,7 @@
     export default {
         data() {
             return {
-                sysName: '企业资产管理(EAM)',
+                sysName: '网站内容发布系统(CMS)',
                 collapsed: false,
                 sysUserName: '',
                 sysUserAvatar: '',
