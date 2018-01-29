@@ -6,7 +6,7 @@ import Role from '../components/index/views/role/index.vue'
 import User from '../components/index/views/user/index.vue'
 import ECharts from '../components/index/views/charts/echarts.vue'
 import Person from '../components/index/views/person/index.vue'
-import MapView from '../components/index/views/map/map.vue'
+import Unit from '../components/index/views/unit/index.vue'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
@@ -33,7 +33,7 @@ const routers = new VueRouter({
             name: '系统管理',
             iconCls: 'fa fa-bar-chart',
             children: [
-                {path: '/unit', component: Table, name: '单位管理'},
+                {path: '/unit', component: Unit, name: '单位管理'},
                 {path: '/user', component: Table, name: '用户管理'},
                 {path: '/role', component: Table, name: '角色管理'},
                 {path: '/role', component: Table, name: '注册审核'}
@@ -49,7 +49,7 @@ const routers = new VueRouter({
                 {path: '/user', component: User, name: '弹窗飘窗管理'},
                 {path: '/role', component: Role, name: '回收站'},
                 {path: '/auth', component: User, name: '建言信息管理'},
-                {path: '/resource', component: ECharts, name: '发稿统计'}
+                {path: '/portal', component: ECharts, name: '发稿统计'}
             ]
         },
         {

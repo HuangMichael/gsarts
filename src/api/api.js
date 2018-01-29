@@ -60,4 +60,9 @@ export const getAllPerson = params => {
     return axios.get(`${base}/person/list`);
 };
 
+//获取 所有单位
+export const getAllUnits = params => {
+    return axios.get(`${base}/unit`);
+};
+
 
