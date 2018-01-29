@@ -58,7 +58,9 @@ export default {
                 sex: -1,
                 age: 0,
                 birth: '',
-                addr: ''
+                addr: '',
+                sortNo: '',
+                status: '1'
             },
 
             addFormVisible: false,//新增界面是否显示
