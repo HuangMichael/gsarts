@@ -2,7 +2,7 @@
  * Created by huangbin on 2018/1/26.
  */
 import util from 'common/js/util'
-import axios from 'axios'
+import findUserByParam from 'api/api';
 
 export default {
     data() {
@@ -21,7 +21,7 @@ export default {
             }],
             operations: [{
                 label: "查询",
-                method: "getUsers()",
+                method: "getUnits()",
                 btnType: "primary",
                 icon: "el-icon-circle-plus"
             }, {
@@ -35,12 +35,12 @@ export default {
                 btnType: "primary",
                 icon: "el-icon-caret-right"
             }],
-            users: [],
+            dataList: [],
             total: 0,
             page: 1,
             listLoading: false,
             sels: [],//列表选中列
-
+            columnsConfig: [],
             editFormVisible: false,//编辑界面是否显示
             editLoading: false,
             editFormRules: {
@@ -77,38 +77,78 @@ export default {
         }
     },
     methods: {
+        /**
+         * 通过反射机制调用传入的参数对应的方法
+         * @param m
+         */
         applyMethod(m){
             eval("this." + m);
         },
+        /**
+         * 配置APP的数据列表配置
+         */
+        getColumnsConfig(){
+            this.columnsConfig = [
+                {
+                    "type": "selection",
+                    "width": "55"
+                },
+
+                {
+                    "type": "",
+                    "prop": "code",
+                    "label": "机构编号",
+                    "width": "120",
+                    "sortable": true
+                }, {
+                    "type": "",
+                    "prop": "name",
+                    "label": "机构名称",
+                    "width": "220",
+                    "sortable": true
+                }, {
+                    "type": "",
+                    "prop": "parent",
+                    "label": "上级机构",
+                    "width": "220",
+                    "sortable": true
+                }, {
+                    "type": "",
+                    "prop": "sortNo",
+                    "label": "排序",
+                    "width": "120",
+                    "sortable": true
+                }, {
+                    "type": "",
+                    "prop": "status",
+                    "label": "状态",
+                    "width": "120",
+                    "sortable": true
+                }];
+        },
+
+
         //性别显示转换
         formatSex: function (row, column) {
             return row.sex == 1 ? '男' : row.sex == 0 ? '女' : '未知';
         },
         handleCurrentChange(val) {
             this.page = val;
-            this.getUsers();
+            this.getUnits();
         },
-        // getAllUnits(){
-        //     let data = axios.get(host + `/unit/`);
-        //     console.log("--data------------" + JSON.stringify(data));
-        //
-        // },
         //获取用户列表
-        getUsers() {
+        getUnits() {
             let para = {
                 page: this.page,
                 name: this.filters.name
             };
             this.listLoading = true;
-
-            // 为给定 ID 的 user 创建请求
-            axios.get('api/unit/')
-                .then(function (response) {
-                    console.log("response----------------" + JSON.stringify(response));
-                })
-                .catch(function (error) {
-                    console.log("error----------------" + JSON.stringify(error));
-                });
+            findUserByParam(para).then((res) => {
+                console.log("res.data--------------" + JSON.stringify(res.data));
+                this.total = res.data.total;
+                this.dataList = res.data.dataList;
+                this.listLoading = false;
+            });
         },
         //删除
         handleDel: function (index, row) {
@@ -125,7 +165,7 @@ export default {
                 //         message: '删除成功',
                 //         type: 'success'
                 //     });
-                //     this.getUsers();
+                //     this.getUnits();
                 // });
             }).catch(() => {
 
@@ -165,7 +205,7 @@ export default {
                         //     });
                         //     this.$refs['editForm'].resetFields();
                         //     this.editFormVisible = false;
-                        //     this.getUsers();
+                        //     this.getUnits();
                         // });
                     });
                 }
@@ -189,7 +229,7 @@ export default {
                         //     });
                         //     this.$refs['addForm'].resetFields();
                         //     this.addFormVisible = false;
-                        //     this.getUsers();
+                        //     this.getUnits();
                         // });
                     });
                 }
@@ -214,7 +254,7 @@ export default {
                 //         message: '删除成功',
                 //         type: 'success'
                 //     });
-                //     this.getUsers();
+                //     this.getUnits();
                 // });
             }).catch(() => {
 
@@ -222,7 +262,8 @@ export default {
         }
     },
     mounted() {
-        this.getUsers();
+        this.getColumnsConfig();
+        this.getUnits();
     }
 }
 

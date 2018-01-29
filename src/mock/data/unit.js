@@ -1,17 +1,16 @@
 import Mock from 'mockjs';
 const Units = [];
-
-for (let i = 0; i < 86; i++) {
+for (let i = 0; i < 99; i++) {
     Units.push(Mock.mock({
         id: Mock.Random.guid(),
-        name: Mock.Random.cname(),
-        telephone: Mock.Random.string('number', 11),
-        password: Mock.Random.string('number', 6),
-        addr: Mock.mock('@county(true)'),
-        'age|18-60': 1,
-        birth: Mock.Random.date(),
-        sex: Mock.Random.integer(0, 1)
+        code: Mock.Random.cname(),
+        name: "甘肃文联" + i,
+        parent: "甘肃文联",
+        sortNo: i,
+        status: "1"
     }));
 }
 
+
+console.log("Units----from mock--------" + JSON.stringify(Units));
 export {Units};

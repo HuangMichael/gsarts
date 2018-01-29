@@ -4,7 +4,7 @@
 
 import util from 'common/js/util'
 //import NProgress from 'nprogress'
-import {getUserListPage, removeUser, batchRemoveUser, editUser, addUser} from 'api/api';
+import {findUserByParam, removeUser, batchRemoveUser, editUser, addUser} from 'api/api';
 
 export default {
     data() {
@@ -97,7 +97,7 @@ export default {
                 name: this.filters.name
             };
             this.listLoading = true;
-            getUserListPage(para).then((res) => {
+            findUserByParam(para).then((res) => {
                 this.total = res.data.total;
                 this.users = res.data.users;
                 this.listLoading = false;

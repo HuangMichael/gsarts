@@ -3,17 +3,12 @@
         <!--工具条-->
         <el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
             <el-form :inline="true" :model="filters">
-                <!--<template v-for="c in queryCols">-->
-                <!--<el-form-item>-->
-                <!--<el-input v-model="c.colName" placeholder="c.placeHolder"></el-input>-->
-                <!--</el-form-item>-->
-                <!--</template>-->
                 <el-form-item>
                     <el-input v-model="filters.name" placeholder="姓名"></el-input>
                 </el-form-item>
                 <template v-for="opt in operations">
                     <el-form-item>
-                        <el-button icon="opt.icon" type="primary" v-on:click=applyMethod(opt.method)>{{opt.label}}
+                        <el-button icon="opt.icon" type="primary" v-on:click="applyMethod(opt.method)">{{opt.label}}
                         </el-button>
                     </el-form-item>
                 </template>
@@ -21,22 +16,12 @@
         </el-col>
 
         <!--列表-->
-        <el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange"
+        <el-table :data="dataList" highlight-current-row v-loading="listLoading" @selection-change="selsChange"
                   style="width: 100%;">
-            <el-table-column type="selection" width="55">
-            </el-table-column>
-            <el-table-column type="index" width="60">
-            </el-table-column>
-            <el-table-column prop="name" label="姓名" width="120" sortable>
-            </el-table-column>
-            <el-table-column prop="sex" label="性别" width="100" sortable>
-            </el-table-column>
-            <el-table-column prop="age" label="年龄" width="100" sortable>
-            </el-table-column>
-            <el-table-column prop="birth" label="生日" width="120" sortable>
-            </el-table-column>
-            <el-table-column prop="addr" label="地址" min-width="120" sortable>
-            </el-table-column>
+            <template v-for="config in columnsConfig">
+                <el-table-column :type="config.type" :prop="config.prop" :width="config.width" :label="config.label">
+                </el-table-column>
+            </template>
             <el-table-column label="操作" width="150">
                 <template scope="scope">
                     <el-button size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
