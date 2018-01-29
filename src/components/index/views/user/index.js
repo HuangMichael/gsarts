@@ -4,7 +4,7 @@
 
 import util from 'common/js/util'
 //import NProgress from 'nprogress'
-import {findUserByParam, removeUser, batchRemoveUser, editUser, addUser} from 'api/api';
+import {getUserListPage, removeUser, batchRemoveUser, editUser, addUser} from 'api/api';
 
 export default {
     data() {
@@ -42,7 +42,7 @@ export default {
             page: 1,
             listLoading: false,
             sels: [],//列表选中列
-
+            columnsConfig: [],
             editFormVisible: false,//编辑界面是否显示
             editLoading: false,
             editFormRules: {
@@ -90,6 +90,85 @@ export default {
             this.page = val;
             this.getUsers();
         },
+
+
+        /*    <!--<el-table-column type="selection" width="55">-->
+         <!--</el-table-column>-->
+         <!--<el-table-column type="index" width="60">-->
+         <!--</el-table-column>-->
+         <!--<el-table-column prop="name" label="姓名" width="120" sortable>-->
+         <!--</el-table-column>-->
+         <!--<el-table-column prop="sex" label="性别" width="100" sortable>-->
+         <!--</el-table-column>-->
+         <!--<el-table-column prop="age" label="年龄" width="100" sortable>-->
+         <!--</el-table-column>-->
+         <!--<el-table-column prop="birth" label="生日" width="120" sortable>-->
+         <!--</el-table-column>-->
+         <!--<el-table-column prop="addr" label="地址" min-width="120" sortable>-->
+         <!--</el-table-column>-->*/
+
+
+        getColumnsConfig(){
+            this.columnsConfig = [
+                {
+                    "type": "selection",
+                    "width": "55"
+                },
+                {
+                    "type": "index",
+                    "width": "60"
+                },
+
+                {
+                    "type": "",
+                    "prop": "name",
+                    "label": "姓名",
+                    "width": "60",
+                    "sortable": true
+                }, {
+                    "type": "",
+                    "prop": "sex",
+                    "label": "性别",
+                    "width": "50",
+                    "sortable": true
+                }, {
+                    "type": "",
+                    "prop": "age",
+                    "label": "年龄",
+                    "width": "50",
+                    "sortable": true
+                },
+
+                {
+                    "type": "",
+                    "prop": "birth",
+                    "label": "生日",
+                    "width": "120",
+                    "sortable": true
+                },
+                {
+                    "type": "",
+                    "prop": "addr",
+                    "label": "地址",
+                    "width": "220",
+                    "sortable": true
+                },
+                {
+                    "type": "",
+                    "prop": "sortNo",
+                    "label": "排序",
+                    "width": "50",
+                    "sortable": true
+                }, {
+                    "type": "",
+                    "prop": "status",
+                    "label": "状态",
+                    "width": "50",
+                    "sortable": true
+                }];
+        },
+
+
         //获取用户列表
         getUsers() {
             let para = {
@@ -97,7 +176,7 @@ export default {
                 name: this.filters.name
             };
             this.listLoading = true;
-            findUserByParam(para).then((res) => {
+            getUserListPage(para).then((res) => {
                 this.total = res.data.total;
                 this.users = res.data.users;
                 this.listLoading = false;
@@ -216,6 +295,7 @@ export default {
     },
     mounted() {
         this.getUsers();
+        this.getColumnsConfig();
     }
 }
 
