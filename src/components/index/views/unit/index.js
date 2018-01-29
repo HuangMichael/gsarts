@@ -46,6 +46,9 @@ export default {
             editFormRules: {
                 name: [
                     {required: true, message: '请输入姓名', trigger: 'blur'}
+                ],
+                sex: [
+                    {required: true, message: '请选择性别', trigger: 'blur'}
                 ]
             },
             //编辑界面数据
@@ -63,6 +66,9 @@ export default {
             addFormRules: {
                 name: [
                     {required: true, message: '请输入姓名', trigger: 'blur'}
+                ],
+                sex: [
+                    {required: true, message: '请选择性别', trigger: 'blur'}
                 ]
             },
             //新增界面数据

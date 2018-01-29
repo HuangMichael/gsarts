@@ -91,23 +91,9 @@ export default {
             this.getUsers();
         },
 
-
-        /*    <!--<el-table-column type="selection" width="55">-->
-         <!--</el-table-column>-->
-         <!--<el-table-column type="index" width="60">-->
-         <!--</el-table-column>-->
-         <!--<el-table-column prop="name" label="姓名" width="120" sortable>-->
-         <!--</el-table-column>-->
-         <!--<el-table-column prop="sex" label="性别" width="100" sortable>-->
-         <!--</el-table-column>-->
-         <!--<el-table-column prop="age" label="年龄" width="100" sortable>-->
-         <!--</el-table-column>-->
-         <!--<el-table-column prop="birth" label="生日" width="120" sortable>-->
-         <!--</el-table-column>-->
-         <!--<el-table-column prop="addr" label="地址" min-width="120" sortable>-->
-         <!--</el-table-column>-->*/
-
-
+        /**
+         * 获取数据表列配置
+         */
         getColumnsConfig(){
             this.columnsConfig = [
                 {
@@ -118,7 +104,6 @@ export default {
                     "type": "index",
                     "width": "60"
                 },
-
                 {
                     "type": "",
                     "prop": "name",
