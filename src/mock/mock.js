@@ -128,6 +128,25 @@ export default {
             });
         });
 
+        //获取用户列表（分页）
+        mock.onGet('/role/listpage').reply(config => {
+            let {page, name} = config.params;
+            let mockRoles = _Roles.filter(role => {
+                if (name && role.name.indexOf(name) == -1) return false;
+                return true;
+            });
+            let total = mockRoles.length;
+            mockRoles = mockRoles.filter((u, index) => index < 10 * page && index >= 10 * (page - 1));
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve([200, {
+                        total: total,
+                        roles: mockRoles
+                    }]);
+                }, 1000);
+            });
+        });
+
         //删除用户
         mock.onGet('/user/remove').reply(config => {
             let {id} = config.params;

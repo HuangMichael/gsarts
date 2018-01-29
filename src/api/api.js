@@ -4,6 +4,7 @@ let base = '';
 let host = 'http://localhost:8080/Urban/rest';
 var rootIP = process.env.API_ROOT;
 
+
 export const requestLogin = params => {
     return axios.post(`${base}/login`, params).then(res => res.data);
 };
@@ -22,11 +23,16 @@ export const getUserList2 = params => {
 };
 
 export const getUserListPage = params => {
-
-
     console.log("api----params-----------"+JSON.stringify(params));
     return axios.get(`${base}/user/listpage`, {params: params});
 };
+
+
+export const getRoleListPage = params => {
+    console.log("api----params-----------"+JSON.stringify(params));
+    return axios.get(`${base}/role/listpage`, {params: params});
+};
+
 
 export const getAllRoles = params => {
     return axios.get(`${base}/role/list`, {params: params});

@@ -1,20 +1,47 @@
 /**
- * Created by huangbin on 2018/1/25.
+ * Created by huangbin on 2018/1/26.
  */
-import util from 'common/js/util';
-import {getAllRoles, removeUser, batchRemoveUser, editUser, addUser} from 'api/api';
+
+import util from 'common/js/util'
+import {getRoleListPage} from 'api/api';
+
 export default {
     data() {
         return {
             filters: {
-                roleName: ''
+                name: ''
             },
-            dataList: [],
+            //定义查询条件
+
+            queryCols: [{
+                colName: "userName",
+                placeHolder: "用户名称"
+            }, {
+                colName: "telephone",
+                placeHolder: "电话号码"
+            }],
+            operations: [{
+                label: "查询",
+                method: "getRoles()",
+                btnType: "primary",
+                icon: "el-icon-circle-plus"
+            }, {
+                label: "新增记录",
+                method: "handleAdd()",
+                btnType: "primary",
+                icon: "el-icon-search"
+            }, {
+                label: "发起流程",
+                method: "startFlow()",
+                btnType: "primary",
+                icon: "el-icon-caret-right"
+            }],
+            roles: [],
             total: 0,
             page: 1,
-            // pageSize: 16,
             listLoading: false,
             sels: [],//列表选中列
+            columnsConfig: [],
             editFormVisible: false,//编辑界面是否显示
             editLoading: false,
             editFormRules: {
@@ -51,21 +78,69 @@ export default {
         }
     },
     methods: {
+        applyMethod(m){
+            eval("this." + m);
+        },
+        //性别显示转换
+        formatSex: function (row, column) {
+            return row.sex == 1 ? '男' : row.sex == 0 ? '女' : '未知';
+        },
+
+        formatStatus: function (row, column) {
+            return row.status == "1" ? '有效' : row.status == '0' ? '无效' : '未知';
+        },
+
         handleCurrentChange(val) {
             this.page = val;
-            this.getDataList();
+            this.getRoles();
         },
+
+        /**
+         * 获取数据表列配置
+         */
+        getColumnsConfig(){
+            this.columnsConfig = [
+                {
+                    "type": "selection",
+                    "width": "100"
+                },
+                {
+                    "type": "index",
+                    "width": "100"
+                },
+                {
+                    "type": "",
+                    "prop": "name",
+                    "label": "角色名称",
+                    "width": "300",
+                    "sortable": true
+                },
+                {
+                    "type": "",
+                    "prop": "sortNo",
+                    "label": "排序",
+                    "width": "50",
+                    "sortable": true
+                }, {
+                    "type": "",
+                    "prop": "status",
+                    "label": "排序",
+                    "width": "50",
+                    "sortable": true
+                }];
+        },
+
+
         //获取用户列表
-        getDataList() {
+        getRoles() {
             let para = {
                 page: this.page,
-                name: this.filters.roleName
+                name: this.filters.name
             };
             this.listLoading = true;
-            getAllRoles(para).then((res) => {
-                console.log("res.data--------------" + JSON.stringify(res.data));
+            getRoleListPage(para).then((res) => {
                 this.total = res.data.total;
-                this.dataList = res.data.dataList;
+                this.roles = res.data.roles;
                 this.listLoading = false;
             });
         },
@@ -84,7 +159,7 @@ export default {
                         message: '删除成功',
                         type: 'success'
                     });
-                    this.getDataList();
+                    this.getRoles();
                 });
             }).catch(() => {
 
@@ -124,7 +199,7 @@ export default {
                             });
                             this.$refs['editForm'].resetFields();
                             this.editFormVisible = false;
-                            this.getDataList();
+                            this.getRoles();
                         });
                     });
                 }
@@ -148,7 +223,7 @@ export default {
                             });
                             this.$refs['addForm'].resetFields();
                             this.addFormVisible = false;
-                            this.getDataList();
+                            this.getRoles();
                         });
                     });
                 }
@@ -173,7 +248,7 @@ export default {
                         message: '删除成功',
                         type: 'success'
                     });
-                    this.getDataList();
+                    this.getRoles();
                 });
             }).catch(() => {
 
@@ -181,6 +256,9 @@ export default {
         }
     },
     mounted() {
-        this.getDataList();
+        this.getRoles();
+        this.getColumnsConfig();
     }
 }
+
+

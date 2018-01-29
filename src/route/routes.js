@@ -35,7 +35,7 @@ const routers = new VueRouter({
             children: [
                 {path: '/unit', component: Unit, name: '单位管理'},
                 {path: '/user', component: User, name: '用户管理'},
-                {path: '/role', component: Table, name: '角色管理'},
+                {path: '/role', component: Role, name: '角色管理'},
                 {path: '/role', component: Table, name: '注册审核'}
             ]
         },
