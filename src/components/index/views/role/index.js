@@ -124,7 +124,7 @@ export default {
                 }, {
                     "type": "",
                     "prop": "status",
-                    "label": "排序",
+                    "label": "状态",
                     "width": "50",
                     "sortable": true
                 }];
