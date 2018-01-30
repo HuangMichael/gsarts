@@ -45,6 +45,17 @@ export const getMemberWorksListPage = params => {
 };
 
 
+export const getPavilionAuthorListPage = params => {
+    console.log("api----params-----------"+JSON.stringify(params));
+    return axios.get(`${base}/pavilionAuthor/listpage`, {params: params});
+};
+
+
+export const getPavilionWorksListPage = params => {
+    console.log("api----params-----------"+JSON.stringify(params));
+    return axios.get(`${base}/pavilionWorks/listpage`, {params: params});
+};
+
 export const getAllRoles = params => {
     return axios.get(`${base}/role/list`, {params: params});
 };

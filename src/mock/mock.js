@@ -6,12 +6,17 @@ import {Infos} from './data/infos';
 import {Telephone} from './data/telephone';
 import {Members} from './data/member';
 import {MemberWorks} from './data/memberWorks';
+
+import {PavilionAuthors} from './data/pavilionAuthor';
+
+// import {MemberWorks} from './data/pavilionWorks';
 let _Users = Users;
 let _Infos = Infos;
 let _Telephone = Telephone;
 let _Roles = Roles;
 let _Members = Members;
 let _MemberWorks = MemberWorks;
+let _PavilionAuthors = PavilionAuthors;
 
 export default {
     /**
@@ -190,6 +195,27 @@ export default {
                 }, 1000);
             });
         });
+
+        //获取网上展馆作者列表
+        mock.onGet('/pavilionAuthor/listpage').reply(config => {
+            let {page, name} = config.params;
+            let mockPavilionAuthors = _PavilionAuthors.filter(author => {
+                if (name && author.name.indexOf(name) == -1) return false;
+                return true;
+            });
+            let total = mockPavilionAuthors.length;
+            mockPavilionAuthors = mockPavilionAuthors.filter((u, index) => index < 10 * page && index >= 10 * (page - 1));
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve([200, {
+                        total: total,
+                        pavilionAuthors: mockPavilionAuthors
+                    }]);
+                }, 1000);
+            });
+        });
+
+        // PavilionAuthors
 
         //删除用户
         mock.onGet('/user/remove').reply(config => {

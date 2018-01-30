@@ -4,7 +4,7 @@
 
 import util from 'common/js/util'
 //import NProgress from 'nprogress'
-import {getMemberListPage, removeUser, batchRemoveUser, editUser, addUser} from 'api/api';
+import {getPavilionAuthorListPage, removeUser, batchRemoveUser, editUser, addUser} from 'api/api';
 
 export default {
     data() {
@@ -13,7 +13,6 @@ export default {
                 name: ''
             },
             //定义查询条件
-
             queryCols: [{
                 colName: "userName",
                 placeHolder: "用户名称"
@@ -23,7 +22,7 @@ export default {
             }],
             operations: [{
                 label: "查询",
-                method: "getMembers()",
+                method: "getPavilionAuthors()",
                 btnType: "primary",
                 icon: "el-icon-circle-plus"
             }, {
@@ -32,22 +31,12 @@ export default {
                 btnType: "primary",
                 icon: "el-icon-search"
             }, {
-                label: "添加会员照片",
-                method: "addMemberPhoto()",
+                label: "添加作者照片",
+                method: "addAuthorPhoto()",
                 btnType: "primary",
                 icon: "el-icon-search"
-            }, {
-                label: "导入Excel",
-                method: "importExcel()",
-                btnType: "primary",
-                icon: "el-icon-caret-right"
-            }, {
-                label: "模板下载",
-                method: "downloadTemplate()",
-                btnType: "primary",
-                icon: "el-icon-caret-right"
             }],
-            members: [],
+            pavilionAuthors: [],
             total: 0,
             page: 1,
             listLoading: false,
@@ -98,7 +87,7 @@ export default {
         },
         handleCurrentChange(val) {
             this.page = val;
-            this.getMembers();
+            this.getPavilionAuthors();
         },
 
         /**
@@ -123,34 +112,13 @@ export default {
                 }, {
                     "type": "",
                     "prop": "name",
-                    "label": "会员姓名",
+                    "label": "作者姓名",
                     "width": "100",
                     "sortable": true
                 }, {
-                    "type": "",
-                    "prop": "cardNo",
-                    "label": "会员证号",
-                    "width": "100",
-                    "sortable": true
-                }, {
-                    "type": "",
-                    "prop": "memberType",
-                    "label": "会员类型",
-                    "width": "100",
-                    "sortable": true
-                },
-
-                {
                     "type": "",
                     "prop": "hasPhoto",
-                    "label": "是否有照片",
-                    "width": "100",
-                    "sortable": true
-                },
-                {
-                    "type": "",
-                    "prop": "enterDate",
-                    "label": "会员加入时间",
+                    "label": "是否上传照片",
                     "width": "100",
                     "sortable": true
                 },
@@ -182,15 +150,15 @@ export default {
 
 
         //获取用户列表
-        getMembers() {
+        getPavilionAuthors() {
             let para = {
                 page: this.page,
                 name: this.filters.name
             };
             this.listLoading = true;
-            getMemberListPage(para).then((res) => {
+            getPavilionAuthorListPage(para).then((res) => {
                 this.total = res.data.total;
-                this.members = res.data.members;
+                this.pavilionAuthors = res.data.pavilionAuthors;
                 this.listLoading = false;
             });
         },
@@ -209,7 +177,7 @@ export default {
                         message: '删除成功',
                         type: 'success'
                     });
-                    this.getMembers();
+                    this.getPavilionAuthors();
                 });
             }).catch(() => {
 
@@ -249,7 +217,7 @@ export default {
                             });
                             this.$refs['editForm'].resetFields();
                             this.editFormVisible = false;
-                            this.getMembers();
+                            this.getPavilionAuthors();
                         });
                     });
                 }
@@ -273,7 +241,7 @@ export default {
                             });
                             this.$refs['addForm'].resetFields();
                             this.addFormVisible = false;
-                            this.getMembers();
+                            this.getPavilionAuthors();
                         });
                     });
                 }
@@ -298,7 +266,7 @@ export default {
                         message: '删除成功',
                         type: 'success'
                     });
-                    this.getMembers();
+                    this.getPavilionAuthors();
                 });
             }).catch(() => {
 
@@ -306,7 +274,7 @@ export default {
         }
     },
     mounted() {
-        this.getMembers();
+        this.getPavilionAuthors();
         this.getColumnsConfig();
     }
 }

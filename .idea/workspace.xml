@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51f74d29-78f2-4376-bf99-b53abcfe7550" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/index/views/pavilionAuthor/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/index/views/pavilionAuthor/index.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/index/views/pavilionWorks/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/index/views/pavilionWorks/index.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/mock/data/pavilionAuthor.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/route/routes.js" afterPath="$PROJECT_DIR$/src/route/routes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/api/api.js" afterPath="$PROJECT_DIR$/src/api/api.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/index/views/pavilionAuthor/index.js" afterPath="$PROJECT_DIR$/src/components/index/views/pavilionAuthor/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/index/views/pavilionAuthor/index.vue" afterPath="$PROJECT_DIR$/src/components/index/views/pavilionAuthor/index.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/index/views/pavilionWorks/index.js" afterPath="$PROJECT_DIR$/src/components/index/views/pavilionWorks/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mock/mock.js" afterPath="$PROJECT_DIR$/src/mock/mock.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,11 +23,21 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/index/views/pavilionAuthor/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="12" column="24" lean-forward="true" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
+            <state relative-caret-position="-945">
+              <caret line="39" column="21" lean-forward="true" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pavilionAuthor.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mock/data/pavilionAuthor.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="15" column="25" lean-forward="true" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -35,18 +46,52 @@
       <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/route/routes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="12" column="73" lean-forward="true" selection-start-line="12" selection-start-column="73" selection-end-line="12" selection-end-column="73" />
+            <state relative-caret-position="405">
+              <caret line="75" column="61" lean-forward="true" selection-start-line="75" selection-start-column="61" selection-end-line="75" selection-end-column="61" />
+              <folding>
+                <element signature="e#0#55#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/index/views/pavilionAuthor/index.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="355">
+              <caret line="130" column="28" lean-forward="false" selection-start-line="130" selection-start-column="28" selection-end-line="130" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/index/views/pavilionWorks/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="13" column="14" lean-forward="true" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+            <state relative-caret-position="108">
+              <caret line="6" column="88" lean-forward="false" selection-start-line="6" selection-start-column="81" selection-end-line="6" selection-end-column="88" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mock.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mock/mock.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="275">
+              <caret line="199" column="35" lean-forward="false" selection-start-line="199" selection-start-column="35" selection-end-line="199" selection-end-column="35" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="api.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/api/api.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="49" column="44" lean-forward="true" selection-start-line="49" selection-start-column="44" selection-end-line="49" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -65,7 +110,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>class=ti</find>
       <find>class=t</find>
       <find>class=</find>
       <find>class=&quot;&quot;</find>
@@ -95,6 +139,7 @@
       <find>users</find>
       <find>getUsers</find>
       <find>api/api</find>
+      <find>getMembers</find>
     </findStrings>
     <replaceStrings>
       <replace>roles</replace>
@@ -112,6 +157,7 @@
       <replace>getMembers</replace>
       <replace>memberWorks</replace>
       <replace>getMemberWorks</replace>
+      <replace>getPavilionAuthors</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -125,10 +171,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/modules/index/index.html" />
-        <option value="$PROJECT_DIR$/src/modules/index/index.js" />
-        <option value="$PROJECT_DIR$/src/modules/index/views/role/list.vue" />
-        <option value="$PROJECT_DIR$/src/modules/index/views/person/list.vue" />
         <option value="$PROJECT_DIR$/src/modules/index/views/person/index.js.css" />
         <option value="$PROJECT_DIR$/build/utils.js" />
         <option value="$PROJECT_DIR$/build/dev-server.js" />
@@ -168,14 +210,18 @@
         <option value="$PROJECT_DIR$/src/components/index/views/role/index.js" />
         <option value="$PROJECT_DIR$/src/mock/data/member.js" />
         <option value="$PROJECT_DIR$/src/components/index/views/member/index.js" />
-        <option value="$PROJECT_DIR$/src/api/api.js" />
         <option value="$PROJECT_DIR$/src/mock/data/MemberWorks.js" />
-        <option value="$PROJECT_DIR$/src/mock/mock.js" />
         <option value="$PROJECT_DIR$/src/mock/data/memberWorks.js" />
         <option value="$PROJECT_DIR$/src/components/index/views/member/index.vue" />
         <option value="$PROJECT_DIR$/src/components/index/views/memberWorks/index.vue" />
         <option value="$PROJECT_DIR$/src/components/index/views/memberWorks/index.js" />
         <option value="$PROJECT_DIR$/src/route/routes.js" />
+        <option value="$PROJECT_DIR$/src/components/index/views/pavilionWorks/index.js" />
+        <option value="$PROJECT_DIR$/src/components/index/views/pavilionAuthor/index.vue" />
+        <option value="$PROJECT_DIR$/src/api/api.js" />
+        <option value="$PROJECT_DIR$/src/mock/mock.js" />
+        <option value="$PROJECT_DIR$/src/mock/data/pavilionAuthor.js" />
+        <option value="$PROJECT_DIR$/src/components/index/views/pavilionAuthor/index.js" />
       </list>
     </option>
   </component>
@@ -260,7 +306,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="mock" />
+              <option name="myItemId" value="route" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -281,10 +327,6 @@
               <option name="myItemId" value="mock" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -301,36 +343,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="index" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EAM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GSARTS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="index" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -352,7 +364,7 @@
     <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.selected.package.standard" value="C:\Users\Administrator\AppData\Roaming\npm\node_modules\eslint" />
-    <property name="SearchEverywhereHistoryKey" value="route&#9;FILE&#9;file://E:/dev/GSARTS/src/route/routes.js&#10;api/api&#9;FILE&#9;file://E:/dev/GSARTS/src/api/api.js&#10;api/ap&#9;FILE&#9;file://E:/dev/GSARTS/src/api/api.js&#10;mock/&#9;FILE&#9;file://E:/dev/GSARTS/src/mock&#10;data/user&#9;FILE&#9;file://E:/dev/GSARTS/src/mock/data/user.js&#10;module.js&#9;FILE&#9;file://E:/dev/EAM/node_modules/webpack/buildin/module.js&#10;person/&#9;FILE&#9;file://E:/dev/EAM/src/modules/index/views/person&#10;api&#9;FILE&#9;file://E:/dev/EAM/src/api/api.js&#10;person&#9;FILE&#9;file://E:/dev/EAM/src/mock/data/person.js&#10;data/&#9;FILE&#9;file://E:/dev/EAM/src/mock/data&#10;user&#9;FILE&#9;file://E:/dev/EAM/src/mock/data/user.js&#10;API&#9;FILE&#9;file://E:/dev/EAM/src/api/api.js&#10;login.&#9;FILE&#9;file://E:/dev/EAM/src/modules/index/views/Login.vue&#10;ap&#9;FILE&#9;file://E:/dev/EAM/src/api/api.js&#10;api.js&#9;FILE&#9;file://E:/dev/EAM/src/api/api.js" />
+    <property name="SearchEverywhereHistoryKey" value="api/api&#9;FILE&#9;file://E:/dev/GSARTS/src/api/api.js&#10;route&#9;FILE&#9;file://E:/dev/GSARTS/src/route/routes.js&#10;api/ap&#9;FILE&#9;file://E:/dev/GSARTS/src/api/api.js&#10;mock/&#9;FILE&#9;file://E:/dev/GSARTS/src/mock&#10;data/user&#9;FILE&#9;file://E:/dev/GSARTS/src/mock/data/user.js&#10;module.js&#9;FILE&#9;file://E:/dev/EAM/node_modules/webpack/buildin/module.js&#10;person/&#9;FILE&#9;file://E:/dev/EAM/src/modules/index/views/person&#10;api&#9;FILE&#9;file://E:/dev/EAM/src/api/api.js&#10;person&#9;FILE&#9;file://E:/dev/EAM/src/mock/data/person.js&#10;data/&#9;FILE&#9;file://E:/dev/EAM/src/mock/data&#10;user&#9;FILE&#9;file://E:/dev/EAM/src/mock/data/user.js&#10;API&#9;FILE&#9;file://E:/dev/EAM/src/api/api.js&#10;login.&#9;FILE&#9;file://E:/dev/EAM/src/modules/index/views/Login.vue&#10;ap&#9;FILE&#9;file://E:/dev/EAM/src/api/api.js&#10;api.js&#9;FILE&#9;file://E:/dev/EAM/src/api/api.js" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="JavaScriptPreferStrict" value="false" />
@@ -360,8 +372,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\dev\GSARTS\src\components\index\views" />
       <recent name="E:\dev\GSARTS\src\mock\data" />
+      <recent name="E:\dev\GSARTS\src\components\index\views" />
       <recent name="E:\dev\GSARTS\src\components\index\views\role" />
       <recent name="E:\dev\GSARTS\src\components\index\views\unit" />
       <recent name="E:\dev\GSARTS\src\assets\images" />
@@ -473,24 +485,25 @@
       <workItem from="1517102883343" duration="3733000" />
       <workItem from="1517120291146" duration="5599000" />
       <workItem from="1517211133325" duration="14220000" />
-      <workItem from="1517297056612" duration="5482000" />
+      <workItem from="1517297056612" duration="6571000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78341000" />
+    <option name="totallyTimeSpent" value="79430000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1911" y="-9" width="1938" height="1098" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2534319" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2534319" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5346852" sideWeight="0.5021119" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28068304" sideWeight="0.49788806" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15795091" sideWeight="0.49788806" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -558,8 +571,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/dist/static/js/modules/index.7f9616dca846b7c4a294.js" />
-    <entry file="file://$PROJECT_DIR$/src/modules/index/views/nav3/Page6.vue" />
     <entry file="file://$PROJECT_DIR$/src/modules/index/views/nav2/TelManage.vue" />
     <entry file="file://$PROJECT_DIR$/src/modules/index/views/nav2/Page4.vue" />
     <entry file="file://$PROJECT_DIR$/src/components/index/views/nav1/Info.vue">
@@ -825,29 +836,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/api.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mock/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="81">
           <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mock/mock.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="173" column="0" lean-forward="true" selection-start-line="173" selection-start-column="0" selection-end-line="173" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -891,26 +884,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/index/views/pavilionAuthor/index.js">
+    <entry file="file://$PROJECT_DIR$/src/components/index/views/pavilionWorks/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="12" column="24" lean-forward="true" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
+        <state relative-caret-position="108">
+          <caret line="6" column="88" lean-forward="false" selection-start-line="6" selection-start-column="81" selection-end-line="6" selection-end-column="88" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/route/routes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="12" column="73" lean-forward="true" selection-start-line="12" selection-start-column="73" selection-end-line="12" selection-end-column="73" />
+        <state relative-caret-position="405">
+          <caret line="75" column="61" lean-forward="true" selection-start-line="75" selection-start-column="61" selection-end-line="75" selection-end-column="61" />
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/index/views/pavilionAuthor/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="130" column="28" lean-forward="false" selection-start-line="130" selection-start-column="28" selection-end-line="130" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/index/views/pavilionWorks/index.js">
+    <entry file="file://$PROJECT_DIR$/src/api/api.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="13" column="14" lean-forward="true" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+        <state relative-caret-position="425">
+          <caret line="49" column="44" lean-forward="true" selection-start-line="49" selection-start-column="44" selection-end-line="49" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mock/mock.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="199" column="35" lean-forward="false" selection-start-line="199" selection-start-column="35" selection-end-line="199" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mock/data/pavilionAuthor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="15" column="25" lean-forward="true" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/index/views/pavilionAuthor/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-945">
+          <caret line="39" column="21" lean-forward="true" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
           <folding />
         </state>
       </provider>

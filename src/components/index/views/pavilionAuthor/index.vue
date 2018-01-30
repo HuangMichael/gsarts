@@ -4,7 +4,7 @@
         <el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
             <el-form :inline="true" :model="filters">
                 <el-form-item>
-                    <el-input v-model="filters.name" placeholder="会员姓名"></el-input>
+                    <el-input v-model="filters.name" placeholder="作者姓名"></el-input>
                 </el-form-item>
                 <template v-for="opt in operations">
                     <el-form-item>
@@ -16,7 +16,7 @@
         </el-col>
 
         <!--列表-->
-        <el-table :data="members" highlight-current-row v-loading="listLoading" @selection-change="selsChange"
+        <el-table :data="pavilionAuthors" highlight-current-row v-loading="listLoading" @selection-change="selsChange"
                   style="width: 100%;">
             <template v-for="config in columnsConfig">
                 <el-table-column :type="config.type" :prop="config.prop" :min-width="config.width"
@@ -80,8 +80,8 @@
                     <el-input type="number" v-model="editForm.sortNo" :min="0" :max="200"></el-input>
                 </el-form-item>
                 <el-form-item label="状态">
-                    <el-switch v-model="editForm.status"  active-color="#13ce66"
-                               inactive-color="#ff4949" ></el-switch>
+                    <el-switch v-model="editForm.status" active-color="#13ce66"
+                               inactive-color="#ff4949"></el-switch>
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
@@ -115,8 +115,8 @@
                     <el-input type="number" v-model="editForm.sortNo" :min="0" :max="200"></el-input>
                 </el-form-item>
                 <el-form-item label="状态">
-                    <el-switch v-model="editForm.status"  active-color="#13ce66"
-                               inactive-color="#ff4949" ></el-switch>
+                    <el-switch v-model="editForm.status" active-color="#13ce66"
+                               inactive-color="#ff4949"></el-switch>
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">

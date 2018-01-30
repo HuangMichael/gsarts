@@ -13,7 +13,6 @@ export default {
                 name: ''
             },
             //定义查询条件
-
             queryCols: [{
                 colName: "userName",
                 placeHolder: "用户名称"
