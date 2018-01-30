@@ -23,7 +23,7 @@ export default {
             }],
             operations: [{
                 label: "查询",
-                method: "getUsers()",
+                method: "getMembers()",
                 btnType: "primary",
                 icon: "el-icon-circle-plus"
             }, {
@@ -32,12 +32,22 @@ export default {
                 btnType: "primary",
                 icon: "el-icon-search"
             }, {
-                label: "发起流程",
-                method: "startFlow()",
+                label: "添加会员照片",
+                method: "addMemberPhoto()",
+                btnType: "primary",
+                icon: "el-icon-search"
+            }, {
+                label: "导入Excel",
+                method: "importExcel()",
+                btnType: "primary",
+                icon: "el-icon-caret-right"
+            }, {
+                label: "模板下载",
+                method: "downloadTemplate()",
                 btnType: "primary",
                 icon: "el-icon-caret-right"
             }],
-            users: [],
+            members: [],
             total: 0,
             page: 1,
             listLoading: false,
@@ -88,7 +98,7 @@ export default {
         },
         handleCurrentChange(val) {
             this.page = val;
-            this.getUsers();
+            this.getMembers();
         },
 
         /**
@@ -167,12 +177,12 @@ export default {
                 //     "sortable": true
                 // }
 
-                ];
+            ];
         },
 
 
         //获取用户列表
-        getUsers() {
+        getMembers() {
             let para = {
                 page: this.page,
                 name: this.filters.name
@@ -199,7 +209,7 @@ export default {
                         message: '删除成功',
                         type: 'success'
                     });
-                    this.getUsers();
+                    this.getMembers();
                 });
             }).catch(() => {
 
@@ -239,7 +249,7 @@ export default {
                             });
                             this.$refs['editForm'].resetFields();
                             this.editFormVisible = false;
-                            this.getUsers();
+                            this.getMembers();
                         });
                     });
                 }
@@ -263,7 +273,7 @@ export default {
                             });
                             this.$refs['addForm'].resetFields();
                             this.addFormVisible = false;
-                            this.getUsers();
+                            this.getMembers();
                         });
                     });
                 }
@@ -288,7 +298,7 @@ export default {
                         message: '删除成功',
                         type: 'success'
                     });
-                    this.getUsers();
+                    this.getMembers();
                 });
             }).catch(() => {
 
@@ -296,7 +306,7 @@ export default {
         }
     },
     mounted() {
-        this.getUsers();
+        this.getMembers();
         this.getColumnsConfig();
     }
 }
