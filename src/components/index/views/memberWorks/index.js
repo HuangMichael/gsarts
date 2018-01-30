@@ -23,7 +23,7 @@ export default {
             }],
             operations: [{
                 label: "查询",
-                method: "getUsers()",
+                method: "getMemberWorks()",
                 btnType: "primary",
                 icon: "el-icon-circle-plus"
             }, {
@@ -37,7 +37,7 @@ export default {
                 btnType: "primary",
                 icon: "el-icon-caret-right"
             }],
-            users: [],
+            memberWorks: [],
             total: 0,
             page: 1,
             listLoading: false,
@@ -88,7 +88,7 @@ export default {
         },
         handleCurrentChange(val) {
             this.page = val;
-            this.getUsers();
+            this.getMemberWorks();
         },
 
         /**
@@ -104,58 +104,54 @@ export default {
                     "type": "index",
                     "width": "60"
                 },
+
+                {
+                    "type": "",
+                    "prop": "unit",
+                    "label": "所属协会",
+                    "width": "60",
+                    "sortable": true
+                },
                 {
                     "type": "",
                     "prop": "name",
-                    "label": "姓名",
+                    "label": "会员姓名",
                     "width": "60",
                     "sortable": true
                 }, {
                     "type": "",
-                    "prop": "sex",
-                    "label": "性别",
-                    "width": "50",
-                    "sortable": true
-                }, {
-                    "type": "",
-                    "prop": "age",
-                    "label": "年龄",
-                    "width": "50",
+                    "prop": "worksName",
+                    "label": "作品名称",
+                    "width": "100",
                     "sortable": true
                 },
-
                 {
                     "type": "",
-                    "prop": "birth",
-                    "label": "生日",
+                    "prop": "isFocus",
+                    "label": "是否焦点作品",
                     "width": "120",
                     "sortable": true
                 },
                 {
                     "type": "",
-                    "prop": "addr",
-                    "label": "地址",
-                    "width": "220",
+                    "prop": "uploadTime",
+                    "label": "上传时间",
+                    "width": "100",
                     "sortable": true
                 },
                 {
                     "type": "",
-                    "prop": "sortNo",
-                    "label": "排序",
-                    "width": "50",
+                    "prop": "dispatchTime",
+                    "label": "发布时间",
+                    "width": "100",
                     "sortable": true
-                }, {
-                    "type": "",
-                    "prop": "status",
-                    "label": "状态",
-                    "width": "50",
-                    "sortable": true
-                }];
+                }
+            ];
         },
 
 
         //获取用户列表
-        getUsers() {
+        getMemberWorks() {
             let para = {
                 page: this.page,
                 name: this.filters.name
@@ -163,7 +159,7 @@ export default {
             this.listLoading = true;
             getUserListPage(para).then((res) => {
                 this.total = res.data.total;
-                this.users = res.data.users;
+                this.memberWorks = res.data.memberWorks;
                 this.listLoading = false;
             });
         },
@@ -182,7 +178,7 @@ export default {
                         message: '删除成功',
                         type: 'success'
                     });
-                    this.getUsers();
+                    this.getMemberWorks();
                 });
             }).catch(() => {
 
@@ -222,7 +218,7 @@ export default {
                             });
                             this.$refs['editForm'].resetFields();
                             this.editFormVisible = false;
-                            this.getUsers();
+                            this.getMemberWorks();
                         });
                     });
                 }
@@ -246,7 +242,7 @@ export default {
                             });
                             this.$refs['addForm'].resetFields();
                             this.addFormVisible = false;
-                            this.getUsers();
+                            this.getMemberWorks();
                         });
                     });
                 }
@@ -271,7 +267,7 @@ export default {
                         message: '删除成功',
                         type: 'success'
                     });
-                    this.getUsers();
+                    this.getMemberWorks();
                 });
             }).catch(() => {
 
@@ -279,7 +275,7 @@ export default {
         }
     },
     mounted() {
-        this.getUsers();
+        this.getMemberWorks();
         this.getColumnsConfig();
     }
 }

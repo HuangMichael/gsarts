@@ -39,6 +39,12 @@ export const getRoleListPage = params => {
 };
 
 
+export const getMemberWorksListPage = params => {
+    console.log("api----params-----------"+JSON.stringify(params));
+    return axios.get(`${base}/memberWorks/listpage`, {params: params});
+};
+
+
 export const getAllRoles = params => {
     return axios.get(`${base}/role/list`, {params: params});
 };

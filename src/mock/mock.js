@@ -5,11 +5,13 @@ import {Roles} from './data/role';
 import {Infos} from './data/infos';
 import {Telephone} from './data/telephone';
 import {Members} from './data/member';
+import {MemberWorks} from './data/memberWorks';
 let _Users = Users;
 let _Infos = Infos;
 let _Telephone = Telephone;
 let _Roles = Roles;
 let _Members = Members;
+let _MemberWorks = MemberWorks;
 
 export default {
     /**
@@ -164,6 +166,26 @@ export default {
                     resolve([200, {
                         total: total,
                         members: mockMembers
+                    }]);
+                }, 1000);
+            });
+        });
+
+
+        //获取用户列表（分页）
+        mock.onGet('/memberWorks/listpage').reply(config => {
+            let {page, name} = config.params;
+            let mockMemberWorks = _MemberWorks.filter(member => {
+                if (name && member.name.indexOf(name) == -1) return false;
+                return true;
+            });
+            let total = mockMemberWorks.length;
+            mockMemberWorks = mockMemberWorks.filter((u, index) => index < 10 * page && index >= 10 * (page - 1));
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve([200, {
+                        total: total,
+                        memberWorks: mockMemberWorks
                     }]);
                 }, 1000);
             });
