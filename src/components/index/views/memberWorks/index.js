@@ -32,8 +32,13 @@ export default {
                 btnType: "primary",
                 icon: "el-icon-search"
             }, {
-                label: "发起流程",
-                method: "startFlow()",
+                label: "设置焦点作品",
+                method: "setFocusWorks()",
+                btnType: "primary",
+                icon: "el-icon-search"
+            }, {
+                label: "发布作品",
+                method: "dispatch()",
                 btnType: "primary",
                 icon: "el-icon-caret-right"
             }],
