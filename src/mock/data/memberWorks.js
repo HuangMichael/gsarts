@@ -8,11 +8,11 @@ for (let i = 0; i < 86; i++) {
         name: Mock.Random.cname(),
         worksName: Mock.Random.cname(),
         isFocus: "是",
-        birth: Mock.Random.date(),
-        sex: Mock.Random.integer(0, 1),
+        uploadTime: Mock.Random.date(),
+        dispatchTime: Mock.Random.date(),
         sortNo: i,
         status: "1"
     }));
 }
 
-export { MemberWorks};
+export {MemberWorks};
