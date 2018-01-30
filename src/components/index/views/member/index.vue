@@ -16,7 +16,7 @@
         </el-col>
 
         <!--列表-->
-        <el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange"
+        <el-table :data="members" highlight-current-row v-loading="listLoading" @selection-change="selsChange"
                   style="width: 100%;">
             <template v-for="config in columnsConfig">
                 <el-table-column :type="config.type" :prop="config.prop" :min-width="config.width"

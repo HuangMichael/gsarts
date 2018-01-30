@@ -4,7 +4,7 @@
 
 import util from 'common/js/util'
 //import NProgress from 'nprogress'
-import {getUserListPage, removeUser, batchRemoveUser, editUser, addUser} from 'api/api';
+import {getMemberListPage, removeUser, batchRemoveUser, editUser, addUser} from 'api/api';
 
 export default {
     data() {
@@ -106,51 +106,68 @@ export default {
                 },
                 {
                     "type": "",
+                    "prop": "unit",
+                    "label": "所属协会",
+                    "width": "100",
+                    "sortable": true
+                }, {
+                    "type": "",
                     "prop": "name",
-                    "label": "姓名",
-                    "width": "60",
+                    "label": "会员姓名",
+                    "width": "100",
                     "sortable": true
                 }, {
                     "type": "",
-                    "prop": "sex",
-                    "label": "性别",
-                    "width": "50",
+                    "prop": "cardNo",
+                    "label": "会员证号",
+                    "width": "100",
                     "sortable": true
                 }, {
                     "type": "",
-                    "prop": "age",
-                    "label": "年龄",
-                    "width": "50",
+                    "prop": "memberType",
+                    "label": "会员类型",
+                    "width": "100",
                     "sortable": true
                 },
 
                 {
                     "type": "",
-                    "prop": "birth",
-                    "label": "生日",
-                    "width": "120",
+                    "prop": "hasPhoto",
+                    "label": "是否有照片",
+                    "width": "100",
                     "sortable": true
                 },
                 {
                     "type": "",
-                    "prop": "addr",
-                    "label": "地址",
-                    "width": "220",
+                    "prop": "enterDate",
+                    "label": "会员加入时间",
+                    "width": "100",
                     "sortable": true
                 },
                 {
                     "type": "",
-                    "prop": "sortNo",
-                    "label": "排序",
-                    "width": "50",
+                    "prop": "createTime",
+                    "label": "创建时间",
+                    "width": "100",
                     "sortable": true
-                }, {
-                    "type": "",
-                    "prop": "status",
-                    "label": "状态",
-                    "width": "50",
-                    "sortable": true
-                }];
+                }
+
+                // ,
+                // {
+                //     "type": "",
+                //     "prop": "sortNo",
+                //     "label": "排序",
+                //     "width": "50",
+                //     "sortable": true
+                // }, {
+                //     "type": "",
+                //     "prop": "status",
+                //     "label": "状态",
+                //     "width": "50",
+                //     "sortable": true
+                // }
+
+                ];
         },
 
 
@@ -161,9 +178,9 @@ export default {
                 name: this.filters.name
             };
             this.listLoading = true;
-            getUserListPage(para).then((res) => {
+            getMemberListPage(para).then((res) => {
                 this.total = res.data.total;
-                this.users = res.data.users;
+                this.members = res.data.members;
                 this.listLoading = false;
             });
         },

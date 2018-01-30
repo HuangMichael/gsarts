@@ -4,10 +4,12 @@ import {LoginUsers, Users} from './data/user';
 import {Roles} from './data/role';
 import {Infos} from './data/infos';
 import {Telephone} from './data/telephone';
+import {Members} from './data/member';
 let _Users = Users;
 let _Infos = Infos;
 let _Telephone = Telephone;
 let _Roles = Roles;
+let _Members = Members;
 
 export default {
     /**
@@ -142,6 +144,26 @@ export default {
                     resolve([200, {
                         total: total,
                         roles: mockRoles
+                    }]);
+                }, 1000);
+            });
+        });
+
+
+        //获取用户列表（分页）
+        mock.onGet('/member/listpage').reply(config => {
+            let {page, name} = config.params;
+            let mockMembers = _Members.filter(member => {
+                if (name && member.name.indexOf(name) == -1) return false;
+                return true;
+            });
+            let total = mockMembers.length;
+            mockMembers = mockMembers.filter((u, index) => index < 10 * page && index >= 10 * (page - 1));
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve([200, {
+                        total: total,
+                        members: mockMembers
                     }]);
                 }, 1000);
             });

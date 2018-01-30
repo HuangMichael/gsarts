@@ -27,6 +27,11 @@ export const getUserListPage = params => {
     return axios.get(`${base}/user/listpage`, {params: params});
 };
 
+export const getMemberListPage = params => {
+    console.log("api----params-----------"+JSON.stringify(params));
+    return axios.get(`${base}/member/listpage`, {params: params});
+};
+
 
 export const getRoleListPage = params => {
     console.log("api----params-----------"+JSON.stringify(params));
