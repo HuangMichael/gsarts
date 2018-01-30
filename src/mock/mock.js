@@ -8,6 +8,7 @@ import {Members} from './data/member';
 import {MemberWorks} from './data/memberWorks';
 import {PavilionAuthors} from './data/pavilionAuthor';
 import {PavilionWorks} from './data/pavilionWorks';
+import {Units} from './data/unit';
 let _Users = Users;
 let _Infos = Infos;
 let _Telephone = Telephone;
@@ -15,7 +16,8 @@ let _Roles = Roles;
 let _Members = Members;
 let _MemberWorks = MemberWorks;
 let _PavilionAuthors = PavilionAuthors;
-let _PavilionWorks =PavilionWorks;
+let _PavilionWorks = PavilionWorks;
+let _Units = Units;
 
 export default {
     /**
@@ -234,6 +236,26 @@ export default {
         });
 
         // PavilionAuthors
+
+
+        //获取网上展馆作者列表
+        mock.onGet('/unit/listpage').reply(config => {
+            let {page, name} = config.params;
+            let mockUnits = _Units.filter(unit => {
+                if (name && unit.name.indexOf(name) == -1) return false;
+                return true;
+            });
+            let total = mockUnits.length;
+            mockUnits = mockUnits.filter((u, index) => index < 10 * page && index >= 10 * (page - 1));
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve([200, {
+                        total: total,
+                        units: mockUnits
+                    }]);
+                }, 1000);
+            });
+        });
 
         //删除用户
         mock.onGet('/user/remove').reply(config => {

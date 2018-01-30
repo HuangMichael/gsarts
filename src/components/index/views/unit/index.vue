@@ -4,7 +4,7 @@
         <el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
             <el-form :inline="true" :model="filters">
                 <el-form-item>
-                    <el-input v-model="filters.name" placeholder="姓名"></el-input>
+                    <el-input v-model="filters.name" placeholder="机构名称"></el-input>
                 </el-form-item>
                 <template v-for="opt in operations">
                     <el-form-item>
@@ -16,7 +16,7 @@
         </el-col>
 
         <!--列表-->
-        <el-table :data="dataList" highlight-current-row v-loading="listLoading" @selection-change="selsChange"
+        <el-table :data="units" highlight-current-row v-loading="listLoading" @selection-change="selsChange"
                   style="width: 100%;">
             <template v-for="config in columnsConfig">
                 <el-table-column :type="config.type" :prop="config.prop" :width="config.width" :label="config.label">

@@ -10,7 +10,4 @@ for (let i = 0; i < 99; i++) {
         status: "1"
     }));
 }
-
-
-console.log("Units----from mock--------" + JSON.stringify(Units));
 export {Units};

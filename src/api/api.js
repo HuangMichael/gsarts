@@ -22,6 +22,12 @@ export const getUserList2 = params => {
     return axios.get(`/user/queryAllUser`);
 };
 
+
+export const getUnitListPage = params => {
+    return axios.get(`${base}/unit/listpage`, {params: params});
+};
+
+
 export const getUserListPage = params => {
     console.log("api----params-----------"+JSON.stringify(params));
     return axios.get(`${base}/user/listpage`, {params: params});

@@ -2,7 +2,7 @@
  * Created by huangbin on 2018/1/26.
  */
 import util from 'common/js/util'
-import findUserByParam from 'api/api';
+import {getUnitListPage} from 'api/api';
 
 export default {
     data() {
@@ -35,7 +35,7 @@ export default {
                 btnType: "primary",
                 icon: "el-icon-caret-right"
             }],
-            dataList: [],
+            units: [],
             total: 0,
             page: 1,
             listLoading: false,
@@ -112,13 +112,13 @@ export default {
                     "type": "",
                     "prop": "name",
                     "label": "机构名称",
-                    "width": "220",
+                    "width": "320",
                     "sortable": true
                 }, {
                     "type": "",
                     "prop": "parent",
                     "label": "上级机构",
-                    "width": "220",
+                    "width": "420",
                     "sortable": true
                 }, {
                     "type": "",
@@ -151,10 +151,10 @@ export default {
                 name: this.filters.name
             };
             this.listLoading = true;
-            findUserByParam(para).then((res) => {
+            getUnitListPage(para).then((res) => {
                 console.log("res.data--------------" + JSON.stringify(res.data));
                 this.total = res.data.total;
-                this.dataList = res.data.dataList;
+                this.units = res.data.units;
                 this.listLoading = false;
             });
         },
