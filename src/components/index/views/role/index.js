@@ -15,10 +15,7 @@ export default {
 
             queryCols: [{
                 colName: "userName",
-                placeHolder: "用户名称"
-            }, {
-                colName: "telephone",
-                placeHolder: "电话号码"
+                placeHolder: "角色名称"
             }],
             operations: [{
                 label: "查询",
@@ -26,15 +23,20 @@ export default {
                 btnType: "primary",
                 icon: "el-icon-circle-plus"
             }, {
-                label: "新增记录",
+                label: "新建角色",
                 method: "handleAdd()",
                 btnType: "primary",
                 icon: "el-icon-search"
             }, {
-                label: "发起流程",
-                method: "startFlow()",
+                label: "系统授权",
+                method: "handleAdd()",
                 btnType: "primary",
-                icon: "el-icon-caret-right"
+                icon: "el-icon-search"
+            }, {
+                label: "站点授权",
+                method: "handleAdd()",
+                btnType: "primary",
+                icon: "el-icon-search"
             }],
             roles: [],
             total: 0,
