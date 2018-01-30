@@ -29,11 +29,6 @@ export default {
                 method: "handleAdd()",
                 btnType: "primary",
                 icon: "el-icon-search"
-            }, {
-                label: "发起流程",
-                method: "startFlow()",
-                btnType: "primary",
-                icon: "el-icon-caret-right"
             }],
             units: [],
             total: 0,
@@ -101,14 +96,21 @@ export default {
                     "type": "selection",
                     "width": "55"
                 },
+                {
+                    "type": "index",
+                    "label": "#",
+                    "width": "100"
 
+                },
                 {
                     "type": "",
                     "prop": "code",
                     "label": "机构编号",
                     "width": "120",
                     "sortable": true
-                }, {
+                },
+
+                {
                     "type": "",
                     "prop": "name",
                     "label": "机构名称",
@@ -134,12 +136,6 @@ export default {
                     "sortable": true
                 }];
         },
-
-
-        //性别显示转换
-        formatSex: function (row, column) {
-            return row.sex == 1 ? '男' : row.sex == 0 ? '女' : '未知';
-        },
         handleCurrentChange(val) {
             this.page = val;
             this.getUnits();
@@ -152,7 +148,6 @@ export default {
             };
             this.listLoading = true;
             getUnitListPage(para).then((res) => {
-                console.log("res.data--------------" + JSON.stringify(res.data));
                 this.total = res.data.total;
                 this.units = res.data.units;
                 this.listLoading = false;
