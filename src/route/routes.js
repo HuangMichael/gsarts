@@ -10,6 +10,8 @@ import Unit from '../components/index/views/unit/index.vue'
 import RegAudit from '../components/index/views/regAudit/index.vue'
 import Member from '../components/index/views/member/index.vue'
 import MemberWorks from '../components/index/views/memberWorks/index.vue'
+import PavilionAuthor from '../components/index/views/pavilionAuthor/index.vue'
+import PavilionWorks from '../components/index/views/pavilionWorks/index.vue'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
@@ -71,8 +73,8 @@ const routers = new VueRouter({
             name: '网上展馆',
             iconCls: 'fa fa-id-card-o',
             children: [
-                {path: '/author', component: Table, name: '展馆作者'},
-                {path: '/arts', component: Table, name: '展馆作品'}
+                {path: '/pavilionAuthor', component: PavilionAuthor, name: '展馆作者'},
+                {path: '/pavilionWorks', component: PavilionWorks, name: '展馆作品'}
             ]
         },
 
