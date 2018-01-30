@@ -7,6 +7,9 @@ import User from '../components/index/views/user/index.vue'
 import ECharts from '../components/index/views/charts/echarts.vue'
 import Person from '../components/index/views/person/index.vue'
 import Unit from '../components/index/views/unit/index.vue'
+import RegAudit from '../components/index/views/regAudit/index.vue'
+import Member from '../components/index/views/member/index.vue'
+import MemberWorks from '../components/index/views/memberWorks/index.vue'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
@@ -36,7 +39,7 @@ const routers = new VueRouter({
                 {path: '/unit', component: Unit, name: '单位管理'},
                 {path: '/user', component: User, name: '用户管理'},
                 {path: '/role', component: Role, name: '角色管理'},
-                {path: '/role', component: Table, name: '注册审核'}
+                {path: '/regAudit', component: RegAudit, name: '注册审核'}
             ]
         },
         {
@@ -58,8 +61,8 @@ const routers = new VueRouter({
             name: '会员中心',
             iconCls: 'el-icon-message',//图标样式class
             children: [
-                {path: '/profile', component: Table, name: '会员简介'},
-                {path: '/location', component: Table, name: '会员作品'}
+                {path: '/profile', component: Member, name: '会员简介'},
+                {path: '/works', component: MemberWorks, name: '会员作品'}
             ]
         },
         {
