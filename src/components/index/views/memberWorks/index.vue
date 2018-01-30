@@ -4,7 +4,7 @@
         <el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
             <el-form :inline="true" :model="filters">
                 <el-form-item>
-                    <el-input v-model="filters.name" placeholder="姓名"></el-input>
+                    <el-input v-model="filters.name" placeholder="作品名称"></el-input>
                 </el-form-item>
                 <template v-for="opt in operations">
                     <el-form-item>
@@ -80,8 +80,8 @@
                     <el-input type="number" v-model="editForm.sortNo" :min="0" :max="200"></el-input>
                 </el-form-item>
                 <el-form-item label="状态">
-                    <el-switch v-model="editForm.status"  active-color="#13ce66"
-                               inactive-color="#ff4949" ></el-switch>
+                    <el-switch v-model="editForm.status" active-color="#13ce66"
+                               inactive-color="#ff4949"></el-switch>
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
@@ -115,8 +115,8 @@
                     <el-input type="number" v-model="editForm.sortNo" :min="0" :max="200"></el-input>
                 </el-form-item>
                 <el-form-item label="状态">
-                    <el-switch v-model="editForm.status"  active-color="#13ce66"
-                               inactive-color="#ff4949" ></el-switch>
+                    <el-switch v-model="editForm.status" active-color="#13ce66"
+                               inactive-color="#ff4949"></el-switch>
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
