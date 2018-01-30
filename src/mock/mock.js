@@ -6,10 +6,8 @@ import {Infos} from './data/infos';
 import {Telephone} from './data/telephone';
 import {Members} from './data/member';
 import {MemberWorks} from './data/memberWorks';
-
 import {PavilionAuthors} from './data/pavilionAuthor';
-
-// import {MemberWorks} from './data/pavilionWorks';
+import {PavilionWorks} from './data/pavilionWorks';
 let _Users = Users;
 let _Infos = Infos;
 let _Telephone = Telephone;
@@ -17,6 +15,7 @@ let _Roles = Roles;
 let _Members = Members;
 let _MemberWorks = MemberWorks;
 let _PavilionAuthors = PavilionAuthors;
+let _PavilionWorks =PavilionWorks;
 
 export default {
     /**
@@ -210,6 +209,25 @@ export default {
                     resolve([200, {
                         total: total,
                         pavilionAuthors: mockPavilionAuthors
+                    }]);
+                }, 1000);
+            });
+        });
+
+        //获取网上展馆作者列表
+        mock.onGet('/pavilionWorks/listpage').reply(config => {
+            let {page, name} = config.params;
+            let mockPavilionWorks = _PavilionWorks.filter(works => {
+                if (name && works.name.indexOf(name) == -1) return false;
+                return true;
+            });
+            let total = mockPavilionWorks.length;
+            mockPavilionWorks = mockPavilionWorks.filter((u, index) => index < 10 * page && index >= 10 * (page - 1));
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve([200, {
+                        total: total,
+                        pavilionWorks: mockPavilionWorks
                     }]);
                 }, 1000);
             });
