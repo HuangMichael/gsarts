@@ -1,4 +1,5 @@
 import Login from '../components/index/views/Login.vue'
+import Work from '../components/index/views/workPlatform/index.vue'
 import NotFound from '../components/index/views/404.vue'
 import Home from '../components/index/views/Home.vue'
 import Table from '../components/index/views/nav1/Table.vue'
@@ -30,6 +31,17 @@ const routers = new VueRouter({
             component: NotFound,
             name: '',
             hidden: true
+        },
+
+
+        {
+            path: '/',
+            component: Home,
+            name: '工作台',
+            iconCls: 'fa fa-bar-chart',
+            children: [
+                {path: '/work', component: Work, name: '工作管理'}
+            ]
         },
 
         {
@@ -88,19 +100,18 @@ const routers = new VueRouter({
                 {path: '/secondAudit', component: Table, name: '复审列表'},
                 {path: '/dispatchList', component: Table, name: '发布列表'},
             ]
+        },
+        {
+            path: '/setting',
+            component: Home,
+            name: '系统配置',
+            iconCls: 'fa fa-address-card',
+            children: [
+                {path: '/ftp', component: Table, name: 'FTP设置'},
+                {path: '/interface', component: Table, name: '接口设置'},
+                {path: '/media', component: Table, name: '多媒体设置'}
+            ]
         }
-        // {
-        //     path: '/content',
-        //     component: Home,
-        //     name: '内容管理',
-        //     iconCls: 'fa fa-address-card',
-        //     children: [
-        //         {path: '/college', component: Table, name: '采购申请'},
-        //         {path: '/ecApply', component: Table, name: '易耗品采购申请'},
-        //         {path: '/buyApply', component: Table, name: '设备新置申请'},
-        //         {path: '/updateApply', component: Table, name: '设备更新申请'}
-        //     ]
-        // }
     ]
 })
 
