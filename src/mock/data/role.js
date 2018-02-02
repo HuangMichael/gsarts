@@ -8,7 +8,7 @@ for (let i = 0; i < 10; i++) {
         id: Mock.Random.guid(),
         name: "角色" + i,
         sortNo: i,
-        status: "1"
+        status: "有效"
     }));
 }
 

@@ -23,22 +23,6 @@
                                  :label="config.label">
                 </el-table-column>
             </template>
-
-
-            <!--<el-table-column type="selection" width="55">-->
-            <!--</el-table-column>-->
-            <!--<el-table-column type="index" width="60">-->
-            <!--</el-table-column>-->
-            <!--<el-table-column prop="name" label="姓名" width="120" sortable>-->
-            <!--</el-table-column>-->
-            <!--<el-table-column prop="sex" label="性别" width="100" sortable>-->
-            <!--</el-table-column>-->
-            <!--<el-table-column prop="age" label="年龄" width="100" sortable>-->
-            <!--</el-table-column>-->
-            <!--<el-table-column prop="birth" label="生日" width="120" sortable>-->
-            <!--</el-table-column>-->
-            <!--<el-table-column prop="addr" label="地址" min-width="120" sortable>-->
-            <!--</el-table-column>-->
             <el-table-column label="操作" width="150">
                 <template scope="scope">
                     <el-button size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
@@ -80,8 +64,8 @@
                     <el-input type="number" v-model="editForm.sortNo" :min="0" :max="200"></el-input>
                 </el-form-item>
                 <el-form-item label="状态">
-                    <el-switch v-model="editForm.status"  active-color="#13ce66"
-                               inactive-color="#ff4949" ></el-switch>
+                    <el-switch v-model="editForm.status" active-color="#13ce66"
+                               inactive-color="#ff4949"></el-switch>
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
@@ -115,8 +99,8 @@
                     <el-input type="number" v-model="editForm.sortNo" :min="0" :max="200"></el-input>
                 </el-form-item>
                 <el-form-item label="状态">
-                    <el-switch v-model="editForm.status"  active-color="#13ce66"
-                               inactive-color="#ff4949" ></el-switch>
+                    <el-switch v-model="editForm.status" active-color="#13ce66"
+                               inactive-color="#ff4949"></el-switch>
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">

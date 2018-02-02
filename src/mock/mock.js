@@ -9,6 +9,10 @@ import {MemberWorks} from './data/memberWorks';
 import {PavilionAuthors} from './data/pavilionAuthor';
 import {PavilionWorks} from './data/pavilionWorks';
 import {Units} from './data/unit';
+
+import {Columns} from './data/columns';
+
+
 let _Users = Users;
 let _Infos = Infos;
 let _Telephone = Telephone;
@@ -18,6 +22,7 @@ let _MemberWorks = MemberWorks;
 let _PavilionAuthors = PavilionAuthors;
 let _PavilionWorks = PavilionWorks;
 let _Units = Units;
+let _Columns = Columns;
 
 export default {
     /**
@@ -230,6 +235,26 @@ export default {
                     resolve([200, {
                         total: total,
                         pavilionWorks: mockPavilionWorks
+                    }]);
+                }, 1000);
+            });
+        });
+
+
+        //获取栏目列表
+        mock.onGet('/columns/').reply(config => {
+            let {page, name} = config.params;
+            let mockColumns = _Columns.filter(c => {
+                if (name && c.name.indexOf(name) == -1) return false;
+                return true;
+            });
+            let total = mockColumns.length;
+            mockColumns = mockColumns.filter((u, index) => index < 14 * page && index >= 14 * (page - 1));
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve([200, {
+                        total: total,
+                        columns: mockColumns
                     }]);
                 }, 1000);
             });
