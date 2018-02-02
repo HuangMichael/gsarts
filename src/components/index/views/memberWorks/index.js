@@ -126,7 +126,6 @@ export default {
                 }, {
                     "type": "",
                     "prop": "worksName",
-                    "label": "作品名称",
                     "width": "100",
                     "sortable": true
                 },

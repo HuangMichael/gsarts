@@ -2,7 +2,7 @@
  * Created by huangbin on 2018/1/26.
  */
 import util from 'common/js/util'
-import {getUnitListPage} from 'api/api';
+import findUserByParam from 'api/api';
 
 export default {
     data() {
@@ -29,8 +29,13 @@ export default {
                 method: "handleAdd()",
                 btnType: "primary",
                 icon: "el-icon-search"
+            }, {
+                label: "发起流程",
+                method: "startFlow()",
+                btnType: "primary",
+                icon: "el-icon-caret-right"
             }],
-            units: [],
+            dataList: [],
             total: 0,
             page: 1,
             listLoading: false,
@@ -96,31 +101,24 @@ export default {
                     "type": "selection",
                     "width": "55"
                 },
-                {
-                    "type": "index",
-                    "label": "#",
-                    "width": "100"
 
-                },
                 {
                     "type": "",
                     "prop": "code",
                     "label": "机构编号",
                     "width": "120",
                     "sortable": true
-                },
-
-                {
+                }, {
                     "type": "",
                     "prop": "name",
                     "label": "机构名称",
-                    "width": "320",
+                    "width": "220",
                     "sortable": true
                 }, {
                     "type": "",
                     "prop": "parent",
                     "label": "上级机构",
-                    "width": "420",
+                    "width": "220",
                     "sortable": true
                 }, {
                     "type": "",
@@ -136,6 +134,12 @@ export default {
                     "sortable": true
                 }];
         },
+
+
+        //性别显示转换
+        formatSex: function (row, column) {
+            return row.sex == 1 ? '男' : row.sex == 0 ? '女' : '未知';
+        },
         handleCurrentChange(val) {
             this.page = val;
             this.getUnits();
@@ -147,9 +151,10 @@ export default {
                 name: this.filters.name
             };
             this.listLoading = true;
-            getUnitListPage(para).then((res) => {
+            findUserByParam(para).then((res) => {
+                console.log("res.data--------------" + JSON.stringify(res.data));
                 this.total = res.data.total;
-                this.units = res.data.units;
+                this.dataList = res.data.dataList;
                 this.listLoading = false;
             });
         },

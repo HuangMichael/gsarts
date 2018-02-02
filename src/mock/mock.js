@@ -239,12 +239,14 @@ export default {
 
 
         //获取网上展馆作者列表
-        mock.onGet('/unit/listpage').reply(config => {
+        mock.onGet('http://localhost:8080/unit/').reply(config => {
+            console.log("config--------------" + JSON.stringify(config));
             let {page, name} = config.params;
             let mockUnits = _Units.filter(unit => {
                 if (name && unit.name.indexOf(name) == -1) return false;
                 return true;
             });
+
             let total = mockUnits.length;
             mockUnits = mockUnits.filter((u, index) => index < 10 * page && index >= 10 * (page - 1));
             return new Promise((resolve, reject) => {
