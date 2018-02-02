@@ -11,8 +11,8 @@
 </template>
 <script>
     import echarts from 'echarts'
-    import option from 'mapOptions'  //引入配置项
     import china from  'china'  //引入china.js地图文件
+    import option from 'mapOptions'  //引入配置项
 
     export default {
         name: '',
