@@ -11,6 +11,7 @@ import {PavilionWorks} from './data/pavilionWorks';
 import {Units} from './data/unit';
 
 import {Columns} from './data/columns';
+import {Contents} from './data/content';
 
 
 let _Users = Users;
@@ -23,6 +24,8 @@ let _PavilionAuthors = PavilionAuthors;
 let _PavilionWorks = PavilionWorks;
 let _Units = Units;
 let _Columns = Columns;
+let _Contents = Contents;
+
 
 export default {
     /**
@@ -255,6 +258,27 @@ export default {
                     resolve([200, {
                         total: total,
                         columns: mockColumns
+                    }]);
+                }, 1000);
+            });
+        });
+
+
+
+        //获取栏目列表
+        mock.onGet('/content/').reply(config => {
+            let {page, name} = config.params;
+            let mockContents = _Contents.filter(c => {
+                if (name && c.name.indexOf(name) == -1) return false;
+                return true;
+            });
+            let total = mockContents.length;
+            mockContents = mockContents.filter((u, index) => index < 14 * page && index >= 14 * (page - 1));
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve([200, {
+                        total: total,
+                        contents: mockContents
                     }]);
                 }, 1000);
             });

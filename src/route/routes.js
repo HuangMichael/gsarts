@@ -6,10 +6,11 @@ import Table from '../components/index/views/nav1/Table.vue'
 import Role from '../components/index/views/role/index.vue'
 import User from '../components/index/views/user/index.vue'
 import ECharts from '../components/index/views/charts/echarts.vue'
-import Person from '../components/index/views/person/index.vue'
+
 import Unit from '../components/index/views/unit/index.vue'
 
 import Columns from '../components/index/views/columns/index.vue'
+import Content from '../components/index/views/content/index.vue'
 import RegAudit from '../components/index/views/regAudit/index.vue'
 import Member from '../components/index/views/member/index.vue'
 import MemberWorks from '../components/index/views/memberWorks/index.vue'
@@ -65,7 +66,7 @@ const routers = new VueRouter({
             iconCls: 'fa fa-bar-chart',
             children: [
                 {path: '/columns', component: Columns, name: '栏目管理'},
-                {path: '/content', component: Columns, name: '内容管理'},
+                {path: '/content', component: Content, name: '内容管理'},
                 {path: '/user', component: User, name: '弹窗飘窗管理'},
                 {path: '/role', component: Role, name: '回收站'},
                 {path: '/auth', component: User, name: '建言信息管理'},

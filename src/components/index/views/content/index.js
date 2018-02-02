@@ -3,7 +3,7 @@
  */
 import util from 'common/js/util'
 
-import {getColumnsListPage, removeUser, batchRemoveUser, editUser, addUser} from 'api/api';
+import {getContentsList, removeUser, batchRemoveUser, editUser, addUser} from 'api/api';
 
 export default {
     data() {
@@ -36,7 +36,7 @@ export default {
                 btnType: "primary",
                 icon: "el-icon-caret-right"
             }],
-            columns: [],
+            contents: [],
             total: 0,
             page: 1,
             listLoading: false,
@@ -87,7 +87,7 @@ export default {
         },
         handleCurrentChange(val) {
             this.page = val;
-            this.getColumns();
+            this.getContents();
         },
 
         /**
@@ -99,34 +99,45 @@ export default {
                     "type": "selection",
                     "width": "55"
                 },
-                // {
-                //     "type": "index",
-                //     "width": "60"
-                // },
                 {
                     "type": "",
-                    "prop": "site",
-                    "label": '站点名称',
+                    "prop": "title",
+                    "label": '标题',
                     "width": "60",
                     "sortable": true
                 }, {
                     "type": "",
-                    "prop": "name",
-                    "label": "栏目名称",
+                    "prop": "setTop",
+                    "label": "置顶",
                     "width": "50",
                     "sortable": true
                 }, {
                     "type": "",
-                    "prop": "beginTime",
-                    "label": "生效时间",
+                    "prop": "releasedBy",
+                    "label": "发布者",
+                    "width": "50",
+                    "sortable": true
+                },
+                {
+                    "type": "",
+                    "prop": "releasedTime",
+                    "label": "发布时间",
                     "width": "50",
                     "sortable": true
                 },
 
                 {
                     "type": "",
-                    "prop": "endTime",
-                    "label": "失效时间",
+                    "prop": "clickNum",
+                    "label": "点击数量",
+                    "width": "50",
+                    "sortable": true
+                },
+
+                {
+                    "type": "",
+                    "prop": "auditStatus",
+                    "label": "审核状态",
                     "width": "50",
                     "sortable": true
                 },
@@ -147,15 +158,15 @@ export default {
 
 
         //获取用户列表
-        getColumns() {
+        getContents() {
             let para = {
                 page: this.page,
                 name: this.filters.name
             };
             this.listLoading = true;
-            getColumnsListPage(para).then((res) => {
+            getContentsList(para).then((res) => {
                 this.total = res.data.total;
-                this.columns = res.data.columns;
+                this.contents = res.data.contents;
                 this.listLoading = false;
             });
         },
@@ -174,7 +185,7 @@ export default {
                         message: '删除成功',
                         type: 'success'
                     });
-                    this.getColumns();
+                    this.getContents();
                 });
             }).catch(() => {
 
@@ -214,7 +225,7 @@ export default {
                             });
                             this.$refs['editForm'].resetFields();
                             this.editFormVisible = false;
-                            this.getColumns();
+                            this.getContents();
                         });
                     });
                 }
@@ -238,7 +249,7 @@ export default {
                             });
                             this.$refs['addForm'].resetFields();
                             this.addFormVisible = false;
-                            this.getColumns();
+                            this.getContents();
                         });
                     });
                 }
@@ -263,7 +274,7 @@ export default {
                         message: '删除成功',
                         type: 'success'
                     });
-                    this.getColumns();
+                    this.getContents();
                 });
             }).catch(() => {
 
@@ -271,7 +282,7 @@ export default {
         }
     },
     mounted() {
-        this.getColumns();
+        this.getContents();
         this.getColumnsConfig();
     }
 }

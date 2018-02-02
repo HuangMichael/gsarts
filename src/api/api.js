@@ -28,6 +28,16 @@ export const getUserListPage = params => {
 };
 
 
+/**
+ *
+ * @param params
+ * @returns {AxiosPromise}
+ */
+export const getContentsList = params => {
+    return axios.get(`${base}/content/`, {params: params});
+};
+
+
 export const getColumnsListPage = params => {
     console.log("api----params-----------"+JSON.stringify(params));
     return axios.get(`${base}/columns/`, {params: params});
