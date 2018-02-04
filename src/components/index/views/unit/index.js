@@ -176,10 +176,9 @@ export default {
             this.addFormVisible = true;
             this.addForm = {
                 name: '',
-                sex: -1,
-                age: 0,
-                birth: '',
-                addr: ''
+                parent: "",
+                sortNo: 1,
+                status: ''
             };
         },
         //编辑
@@ -244,7 +243,6 @@ export default {
                 let para = {ids: ids};
                 batchRemoveUser(para).then((res) => {
                     this.listLoading = false;
-                    //NProgress.done();
                     this.$message({
                         message: '删除成功',
                         type: 'success'
