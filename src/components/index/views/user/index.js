@@ -23,7 +23,7 @@ export default {
             }],
             operations: [{
                 label: "查询",
-                method: "getUsers()",
+                method: "getDataList()",
                 btnType: "primary",
                 icon: "el-icon-circle-plus"
             }, {
@@ -37,7 +37,7 @@ export default {
                 btnType: "primary",
                 icon: "el-icon-caret-right"
             }],
-            users: [],
+            dataList: [],
             total: 0,
             page: 1,
             listLoading: false,
@@ -88,7 +88,7 @@ export default {
         },
         handleCurrentChange(val) {
             this.page = val;
-            this.getUsers();
+            this.getDataList();
         },
 
         /**
@@ -152,10 +152,8 @@ export default {
                     "sortable": true
                 }];
         },
-
-
-        //获取用户列表
-        getUsers() {
+        //获取数据列表
+        getDataList() {
             let para = {
                 page: this.page,
                 name: this.filters.name
@@ -163,7 +161,7 @@ export default {
             this.listLoading = true;
             getUserListPage(para).then((res) => {
                 this.total = res.data.total;
-                this.users = res.data.users;
+                this.dataList = res.data.dataList;
                 this.listLoading = false;
             });
         },
@@ -182,7 +180,7 @@ export default {
                         message: '删除成功',
                         type: 'success'
                     });
-                    this.getUsers();
+                    this.getDataList();
                 });
             }).catch(() => {
 
@@ -222,7 +220,7 @@ export default {
                             });
                             this.$refs['editForm'].resetFields();
                             this.editFormVisible = false;
-                            this.getUsers();
+                            this.getDataList();
                         });
                     });
                 }
@@ -246,7 +244,7 @@ export default {
                             });
                             this.$refs['addForm'].resetFields();
                             this.addFormVisible = false;
-                            this.getUsers();
+                            this.getDataList();
                         });
                     });
                 }
@@ -271,7 +269,7 @@ export default {
                         message: '删除成功',
                         type: 'success'
                     });
-                    this.getUsers();
+                    this.getDataList();
                 });
             }).catch(() => {
 
@@ -280,7 +278,7 @@ export default {
     },
     mounted() {
         this.getColumnsConfig();
-        this.getUsers();
+        this.getDataList();
     }
 }
 

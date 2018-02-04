@@ -129,7 +129,7 @@ export default {
         })
 
         //获取用户列表（分页）
-        mock.onGet('/user/listpage').reply(config => {
+        mock.onGet('/user/').reply(config => {
             let {page, name} = config.params;
             let mockUsers = _Users.filter(user => {
                 if (name && user.name.indexOf(name) == -1) return false;
@@ -141,7 +141,7 @@ export default {
                 setTimeout(() => {
                     resolve([200, {
                         total: total,
-                        users: mockUsers
+                        dataList: mockUsers
                     }]);
                 }, 1000);
             });
