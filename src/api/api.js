@@ -10,7 +10,7 @@ export const requestLogin = params => {
 };
 
 export const getUserList = params => {
-    return axios.get(`${base}/user/`, {params: params});
+    return axios.get('/user/', {params: params});
 };
 
 //真实环境时，禁掉mock，请求真实后台地址

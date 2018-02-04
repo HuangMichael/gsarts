@@ -107,26 +107,22 @@ export default {
                     "width": "100"
                 },
                 {
-                    "type": "index",
-                    "width": "100"
-                },
-                {
                     "type": "",
                     "prop": "name",
                     "label": "角色名称",
-                    "width": "300",
+                    "width": "100",
                     "sortable": true
                 },
                 {
                     "type": "",
                     "prop": "sortNo",
                     "label": "排序",
-                    "width": "50",
+                    "width": "100",
                     "sortable": true
                 }, {
                     "type": "",
                     "prop": "status",
-                    "label": "状态",
+                    "label": "100",
                     "width": "50",
                     "sortable": true
                 }];

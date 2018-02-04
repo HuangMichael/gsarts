@@ -4,7 +4,7 @@
 
 import util from 'common/js/util'
 //import NProgress from 'nprogress'
-import {getUserListPage, removeUser, batchRemoveUser, editUser, addUser} from 'api/api';
+import {getUserList, removeUser, batchRemoveUser, editUser, addUser} from 'api/api';
 
 export default {
     data() {
@@ -101,10 +101,6 @@ export default {
                     "width": "55"
                 },
                 {
-                    "type": "index",
-                    "width": "60"
-                },
-                {
                     "type": "",
                     "prop": "name",
                     "label": "姓名",
@@ -159,7 +155,7 @@ export default {
                 name: this.filters.name
             };
             this.listLoading = true;
-            getUserListPage(para).then((res) => {
+            getUserList(para).then((res) => {
                 this.total = res.data.total;
                 this.dataList = res.data.dataList;
                 this.listLoading = false;
