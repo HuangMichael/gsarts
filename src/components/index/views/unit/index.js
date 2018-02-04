@@ -1,8 +1,10 @@
 /**
  * Created by huangbin on 2018/1/26.
  */
+
 import util from 'common/js/util'
-import findUserByParam from 'api/api';
+//import NProgress from 'nprogress'
+import {getUserListPage, removeUser, batchRemoveUser, editUser, addUser} from 'api/api';
 
 export default {
     data() {
@@ -21,7 +23,7 @@ export default {
             }],
             operations: [{
                 label: "查询",
-                method: "getUnits()",
+                method: "getUsers()",
                 btnType: "primary",
                 icon: "el-icon-circle-plus"
             }, {
@@ -35,7 +37,7 @@ export default {
                 btnType: "primary",
                 icon: "el-icon-caret-right"
             }],
-            dataList: [],
+            users: [],
             total: 0,
             page: 1,
             listLoading: false,
@@ -46,9 +48,6 @@ export default {
             editFormRules: {
                 name: [
                     {required: true, message: '请输入姓名', trigger: 'blur'}
-                ],
-                sex: [
-                    {required: true, message: '请选择性别', trigger: 'blur'}
                 ]
             },
             //编辑界面数据
@@ -58,9 +57,7 @@ export default {
                 sex: -1,
                 age: 0,
                 birth: '',
-                addr: '',
-                sortNo: '',
-                status: '1'
+                addr: ''
             },
 
             addFormVisible: false,//新增界面是否显示
@@ -68,9 +65,6 @@ export default {
             addFormRules: {
                 name: [
                     {required: true, message: '请输入姓名', trigger: 'blur'}
-                ],
-                sex: [
-                    {required: true, message: '请选择性别', trigger: 'blur'}
                 ]
             },
             //新增界面数据
@@ -85,15 +79,20 @@ export default {
         }
     },
     methods: {
-        /**
-         * 通过反射机制调用传入的参数对应的方法
-         * @param m
-         */
         applyMethod(m){
             eval("this." + m);
         },
+        //性别显示转换
+        formatSex: function (row, column) {
+            return row.sex == 1 ? '男' : row.sex == 0 ? '女' : '未知';
+        },
+        handleCurrentChange(val) {
+            this.page = val;
+            this.getUsers();
+        },
+
         /**
-         * 配置APP的数据列表配置
+         * 获取数据表列配置
          */
         getColumnsConfig(){
             this.columnsConfig = [
@@ -101,60 +100,70 @@ export default {
                     "type": "selection",
                     "width": "55"
                 },
+                {
+                    "type": "index",
+                    "width": "60"
+                },
+                {
+                    "type": "",
+                    "prop": "name",
+                    "label": "姓名",
+                    "width": "60",
+                    "sortable": true
+                }, {
+                    "type": "",
+                    "prop": "sex",
+                    "label": "性别",
+                    "width": "50",
+                    "sortable": true
+                }, {
+                    "type": "",
+                    "prop": "age",
+                    "label": "年龄",
+                    "width": "50",
+                    "sortable": true
+                },
 
                 {
                     "type": "",
-                    "prop": "code",
-                    "label": "机构编号",
+                    "prop": "birth",
+                    "label": "生日",
                     "width": "120",
                     "sortable": true
-                }, {
+                },
+                {
                     "type": "",
-                    "prop": "name",
-                    "label": "机构名称",
+                    "prop": "addr",
+                    "label": "地址",
                     "width": "220",
                     "sortable": true
-                }, {
-                    "type": "",
-                    "prop": "parent",
-                    "label": "上级机构",
-                    "width": "220",
-                    "sortable": true
-                }, {
+                },
+                {
                     "type": "",
                     "prop": "sortNo",
                     "label": "排序",
-                    "width": "120",
+                    "width": "50",
                     "sortable": true
                 }, {
                     "type": "",
                     "prop": "status",
                     "label": "状态",
-                    "width": "120",
+                    "width": "50",
                     "sortable": true
                 }];
         },
 
 
-        //性别显示转换
-        formatSex: function (row, column) {
-            return row.sex == 1 ? '男' : row.sex == 0 ? '女' : '未知';
-        },
-        handleCurrentChange(val) {
-            this.page = val;
-            this.getUnits();
-        },
         //获取用户列表
-        getUnits() {
+        getUsers() {
             let para = {
                 page: this.page,
                 name: this.filters.name
             };
             this.listLoading = true;
-            findUserByParam(para).then((res) => {
-                console.log("res.data--------------" + JSON.stringify(res.data));
+            getUserListPage(para).then((res) => {
                 this.total = res.data.total;
-                this.dataList = res.data.dataList;
+                this.users = res.data.users;
                 this.listLoading = false;
             });
         },
@@ -166,15 +175,15 @@ export default {
                 this.listLoading = true;
                 //NProgress.start();
                 let para = {id: row.id};
-                // removeUser(para).then((res) => {
-                //     this.listLoading = false;
-                //     //NProgress.done();
-                //     this.$message({
-                //         message: '删除成功',
-                //         type: 'success'
-                //     });
-                //     this.getUnits();
-                // });
+                removeUser(para).then((res) => {
+                    this.listLoading = false;
+                    //NProgress.done();
+                    this.$message({
+                        message: '删除成功',
+                        type: 'success'
+                    });
+                    this.getUsers();
+                });
             }).catch(() => {
 
             });
@@ -204,17 +213,17 @@ export default {
                         //NProgress.start();
                         let para = Object.assign({}, this.editForm);
                         para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
-                        // editUser(para).then((res) => {
-                        //     this.editLoading = false;
-                        //     //NProgress.done();
-                        //     this.$message({
-                        //         message: '提交成功',
-                        //         type: 'success'
-                        //     });
-                        //     this.$refs['editForm'].resetFields();
-                        //     this.editFormVisible = false;
-                        //     this.getUnits();
-                        // });
+                        editUser(para).then((res) => {
+                            this.editLoading = false;
+                            //NProgress.done();
+                            this.$message({
+                                message: '提交成功',
+                                type: 'success'
+                            });
+                            this.$refs['editForm'].resetFields();
+                            this.editFormVisible = false;
+                            this.getUsers();
+                        });
                     });
                 }
             });
@@ -228,17 +237,17 @@ export default {
                         //NProgress.start();
                         let para = Object.assign({}, this.addForm);
                         para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
-                        // addUser(para).then((res) => {
-                        //     this.addLoading = false;
-                        //     //NProgress.done();
-                        //     this.$message({
-                        //         message: '提交成功',
-                        //         type: 'success'
-                        //     });
-                        //     this.$refs['addForm'].resetFields();
-                        //     this.addFormVisible = false;
-                        //     this.getUnits();
-                        // });
+                        addUser(para).then((res) => {
+                            this.addLoading = false;
+                            //NProgress.done();
+                            this.$message({
+                                message: '提交成功',
+                                type: 'success'
+                            });
+                            this.$refs['addForm'].resetFields();
+                            this.addFormVisible = false;
+                            this.getUsers();
+                        });
                     });
                 }
             });
@@ -255,23 +264,23 @@ export default {
                 this.listLoading = true;
                 //NProgress.start();
                 let para = {ids: ids};
-                // batchRemoveUser(para).then((res) => {
-                //     this.listLoading = false;
-                //     //NProgress.done();
-                //     this.$message({
-                //         message: '删除成功',
-                //         type: 'success'
-                //     });
-                //     this.getUnits();
-                // });
+                batchRemoveUser(para).then((res) => {
+                    this.listLoading = false;
+                    //NProgress.done();
+                    this.$message({
+                        message: '删除成功',
+                        type: 'success'
+                    });
+                    this.getUsers();
+                });
             }).catch(() => {
 
             });
         }
     },
     mounted() {
+        this.getUsers();
         this.getColumnsConfig();
-        this.getUnits();
     }
 }
 

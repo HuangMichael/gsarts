@@ -4,11 +4,11 @@
         <el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
             <el-form :inline="true" :model="filters">
                 <el-form-item>
-                    <el-input v-model="filters.name" placeholder="机构名称"></el-input>
+                    <el-input v-model="filters.name" placeholder="姓名"></el-input>
                 </el-form-item>
                 <template v-for="opt in operations">
                     <el-form-item>
-                        <el-button icon="opt.icon" type="primary" v-on:click="applyMethod(opt.method)">{{opt.label}}
+                        <el-button icon="opt.icon" type="primary" v-on:click=applyMethod(opt.method)>{{opt.label}}
                         </el-button>
                     </el-form-item>
                 </template>
@@ -16,10 +16,11 @@
         </el-col>
 
         <!--列表-->
-        <el-table :data="units" highlight-current-row v-loading="listLoading" @selection-change="selsChange"
+        <el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange"
                   style="width: 100%;">
             <template v-for="config in columnsConfig">
-                <el-table-column :type="config.type" :prop="config.prop" :width="config.width" :label="config.label">
+                <el-table-column :type="config.type" :prop="config.prop" :min-width="config.width"
+                                 :label="config.label">
                 </el-table-column>
             </template>
             <el-table-column label="操作" width="150">
@@ -59,6 +60,13 @@
                 <el-form-item label="地址">
                     <el-input type="textarea" v-model="editForm.addr"></el-input>
                 </el-form-item>
+                <el-form-item label="排序">
+                    <el-input type="number" v-model="editForm.sortNo" :min="0" :max="200"></el-input>
+                </el-form-item>
+                <el-form-item label="状态">
+                    <el-switch v-model="editForm.status" active-color="#13ce66"
+                               inactive-color="#ff4949"></el-switch>
+                </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
                 <el-button @click.native="editFormVisible = false">取消</el-button>
@@ -87,6 +95,13 @@
                 <el-form-item label="地址">
                     <el-input type="textarea" v-model="addForm.addr"></el-input>
                 </el-form-item>
+                <el-form-item label="排序">
+                    <el-input type="number" v-model="editForm.sortNo" :min="0" :max="200"></el-input>
+                </el-form-item>
+                <el-form-item label="状态">
+                    <el-switch v-model="editForm.status" active-color="#13ce66"
+                               inactive-color="#ff4949"></el-switch>
+                </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
                 <el-button @click.native="addFormVisible = false">取消</el-button>
@@ -97,8 +112,8 @@
 </template>
 
 <script>
-    import unitJs from './index';
-    export default unitJs;
+    import userJs from './index';
+    export default userJs;
 
 </script>
 

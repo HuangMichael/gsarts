@@ -279,8 +279,8 @@ export default {
         }
     },
     mounted() {
-        this.getUsers();
         this.getColumnsConfig();
+        this.getUsers();
     }
 }
 

@@ -14,6 +14,7 @@ import {Columns} from './data/columns';
 import {Contents} from './data/content';
 
 
+const pageSize = 14;
 let _Users = Users;
 let _Infos = Infos;
 let _Telephone = Telephone;
@@ -135,7 +136,7 @@ export default {
                 return true;
             });
             let total = mockUsers.length;
-            mockUsers = mockUsers.filter((u, index) => index < 10 * page && index >= 10 * (page - 1));
+            mockUsers = mockUsers.filter((u, index) => index < pageSize * page && index >= pageSize * (page - 1));
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
                     resolve([200, {
@@ -154,7 +155,7 @@ export default {
                 return true;
             });
             let total = mockRoles.length;
-            mockRoles = mockRoles.filter((u, index) => index < 10 * page && index >= 10 * (page - 1));
+            mockRoles = mockRoles.filter((u, index) => index < pageSize * page && index >= pageSize * (page - 1));
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
                     resolve([200, {
@@ -174,7 +175,7 @@ export default {
                 return true;
             });
             let total = mockMembers.length;
-            mockMembers = mockMembers.filter((u, index) => index < 10 * page && index >= 10 * (page - 1));
+            mockMembers = mockMembers.filter((u, index) => index < pageSize * page && index >= pageSize * (page - 1));
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
                     resolve([200, {
@@ -194,7 +195,7 @@ export default {
                 return true;
             });
             let total = mockMemberWorks.length;
-            mockMemberWorks = mockMemberWorks.filter((u, index) => index < 10 * page && index >= 10 * (page - 1));
+            mockMemberWorks = mockMemberWorks.filter((u, index) => index < pageSize * page && index >= pageSize * (page - 1));
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
                     resolve([200, {
@@ -213,7 +214,7 @@ export default {
                 return true;
             });
             let total = mockPavilionAuthors.length;
-            mockPavilionAuthors = mockPavilionAuthors.filter((u, index) => index < 10 * page && index >= 10 * (page - 1));
+            mockPavilionAuthors = mockPavilionAuthors.filter((u, index) => index < pageSize * page && index >= pageSize * (page - 1));
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
                     resolve([200, {
@@ -232,7 +233,7 @@ export default {
                 return true;
             });
             let total = mockPavilionWorks.length;
-            mockPavilionWorks = mockPavilionWorks.filter((u, index) => index < 10 * page && index >= 10 * (page - 1));
+            mockPavilionWorks = mockPavilionWorks.filter((u, index) => index < pageSize * page && index >= pageSize * (page - 1));
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
                     resolve([200, {
@@ -252,7 +253,7 @@ export default {
                 return true;
             });
             let total = mockColumns.length;
-            mockColumns = mockColumns.filter((u, index) => index < 14 * page && index >= 14 * (page - 1));
+            mockColumns = mockColumns.filter((u, index) => index < pageSize * page && index >= pageSize * (page - 1));
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
                     resolve([200, {
@@ -264,7 +265,6 @@ export default {
         });
 
 
-
         //获取栏目列表
         mock.onGet('/content/').reply(config => {
             let {page, name} = config.params;
@@ -273,7 +273,7 @@ export default {
                 return true;
             });
             let total = mockContents.length;
-            mockContents = mockContents.filter((u, index) => index < 14 * page && index >= 14 * (page - 1));
+            mockContents = mockContents.filter((u, index) => index < pageSize * page && index >= pageSize * (page - 1));
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
                     resolve([200, {
@@ -297,7 +297,7 @@ export default {
             });
 
             let total = mockUnits.length;
-            mockUnits = mockUnits.filter((u, index) => index < 10 * page && index >= 10 * (page - 1));
+            mockUnits = mockUnits.filter((u, index) => index < pageSize * page && index >= pageSize * (page - 1));
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
                     resolve([200, {
