@@ -4,7 +4,7 @@
 
 import util from 'common/js/util'
 //import NProgress from 'nprogress'
-import {getUserListPage, removeUser, batchRemoveUser, editUser, addUser} from 'api/api';
+import {getUnitList, removeUser, batchRemoveUser, editUser, addUser} from 'api/api';
 
 export default {
     data() {
@@ -37,7 +37,7 @@ export default {
                 btnType: "primary",
                 icon: "el-icon-caret-right"
             }],
-            users: [],
+            dataList: [],
             total: 0,
             page: 1,
             listLoading: false,
@@ -47,33 +47,37 @@ export default {
             editLoading: false,
             editFormRules: {
                 name: [
-                    {required: true, message: '请输入姓名', trigger: 'blur'}
+                    {required: true, message: '请输入机构名称', trigger: 'blur'}
+                ],
+                parent: [
+                    {required: true, message: '请输入上级机构', trigger: 'blur'}
                 ]
             },
             //编辑界面数据
             editForm: {
-                id: 0,
+                code: "",
                 name: '',
-                sex: -1,
-                age: 0,
-                birth: '',
-                addr: ''
+                parent: "",
+                sortNo: 1,
+                status: ''
             },
 
             addFormVisible: false,//新增界面是否显示
             addLoading: false,
             addFormRules: {
                 name: [
-                    {required: true, message: '请输入姓名', trigger: 'blur'}
+                    {required: true, message: '请输入机构名称', trigger: 'blur'}
+                ],
+                parent: [
+                    {required: true, message: '请输入上级机构', trigger: 'blur'}
                 ]
             },
             //新增界面数据
             addForm: {
                 name: '',
-                sex: -1,
-                age: 0,
-                birth: '',
-                addr: ''
+                parent: "",
+                sortNo: 1,
+                status: ''
             }
 
         }
@@ -82,15 +86,10 @@ export default {
         applyMethod(m){
             eval("this." + m);
         },
-        //性别显示转换
-        formatSex: function (row, column) {
-            return row.sex == 1 ? '男' : row.sex == 0 ? '女' : '未知';
-        },
         handleCurrentChange(val) {
             this.page = val;
             this.getUsers();
         },
-
         /**
          * 获取数据表列配置
          */
@@ -101,54 +100,34 @@ export default {
                     "width": "55"
                 },
                 {
-                    "type": "index",
-                    "width": "60"
-                },
-                {
                     "type": "",
-                    "prop": "name",
-                    "label": "姓名",
-                    "width": "60",
-                    "sortable": true
-                }, {
-                    "type": "",
-                    "prop": "sex",
-                    "label": "性别",
-                    "width": "50",
-                    "sortable": true
-                }, {
-                    "type": "",
-                    "prop": "age",
-                    "label": "年龄",
-                    "width": "50",
-                    "sortable": true
-                },
-
-                {
-                    "type": "",
-                    "prop": "birth",
-                    "label": "生日",
+                    "prop": "code",
+                    "label": "机构编号",
                     "width": "120",
                     "sortable": true
-                },
-                {
+                }, {
                     "type": "",
-                    "prop": "addr",
-                    "label": "地址",
+                    "prop": "name",
+                    "label": "机构名称",
                     "width": "220",
                     "sortable": true
-                },
-                {
+                }, {
+                    "type": "",
+                    "prop": "parent",
+                    "label": "上级机构",
+                    "width": "220",
+                    "sortable": true
+                }, {
                     "type": "",
                     "prop": "sortNo",
                     "label": "排序",
-                    "width": "50",
+                    "width": "120",
                     "sortable": true
                 }, {
                     "type": "",
                     "prop": "status",
                     "label": "状态",
-                    "width": "50",
+                    "width": "120",
                     "sortable": true
                 }];
         },
@@ -161,9 +140,9 @@ export default {
                 name: this.filters.name
             };
             this.listLoading = true;
-            getUserListPage(para).then((res) => {
+            getUnitList(para).then((res) => {
                 this.total = res.data.total;
-                this.users = res.data.users;
+                this.dataList = res.data.dataList;
                 this.listLoading = false;
             });
         },

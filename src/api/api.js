@@ -23,8 +23,18 @@ export const getUserList2 = params => {
 };
 
 export const getUserListPage = params => {
-    console.log("api----params-----------"+JSON.stringify(params));
+    console.log("api----params-----------" + JSON.stringify(params));
     return axios.get(`${base}/user/listpage`, {params: params});
+};
+
+
+/**
+ *
+ * @param params
+ * @returns {AxiosPromise}
+ */
+export const getUnitList = params => {
+    return axios.get('/unit/', {params: params});
 };
 
 
@@ -39,38 +49,37 @@ export const getContentsList = params => {
 
 
 export const getColumnsListPage = params => {
-    console.log("api----params-----------"+JSON.stringify(params));
+    console.log("api----params-----------" + JSON.stringify(params));
     return axios.get(`${base}/columns/`, {params: params});
 };
 
 
-
 export const getMemberListPage = params => {
-    console.log("api----params-----------"+JSON.stringify(params));
+    console.log("api----params-----------" + JSON.stringify(params));
     return axios.get(`${base}/member/listpage`, {params: params});
 };
 
 
 export const getRoleListPage = params => {
-    console.log("api----params-----------"+JSON.stringify(params));
+    console.log("api----params-----------" + JSON.stringify(params));
     return axios.get(`${base}/role/listpage`, {params: params});
 };
 
 
 export const getMemberWorksListPage = params => {
-    console.log("api----params-----------"+JSON.stringify(params));
+    console.log("api----params-----------" + JSON.stringify(params));
     return axios.get(`${base}/memberWorks/listpage`, {params: params});
 };
 
 
 export const getPavilionAuthorListPage = params => {
-    console.log("api----params-----------"+JSON.stringify(params));
+    console.log("api----params-----------" + JSON.stringify(params));
     return axios.get(`${base}/pavilionAuthor/listpage`, {params: params});
 };
 
 
 export const getPavilionWorksListPage = params => {
-    console.log("api----params-----------"+JSON.stringify(params));
+    console.log("api----params-----------" + JSON.stringify(params));
     return axios.get(`${base}/pavilionWorks/listpage`, {params: params});
 };
 
@@ -105,10 +114,4 @@ export const getTelephone = params => {
 export const getAllPerson = params => {
     return axios.get(`${base}/person/list`);
 };
-
-//获取 所有单位
-export const getAllUnits = params => {
-    return axios.get(`${base}/unit`);
-};
-
 

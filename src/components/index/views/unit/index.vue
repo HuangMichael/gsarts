@@ -4,7 +4,7 @@
         <el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
             <el-form :inline="true" :model="filters">
                 <el-form-item>
-                    <el-input v-model="filters.name" placeholder="姓名"></el-input>
+                    <el-input v-model="filters.name" placeholder="机构名称"></el-input>
                 </el-form-item>
                 <template v-for="opt in operations">
                     <el-form-item>
@@ -16,7 +16,7 @@
         </el-col>
 
         <!--列表-->
-        <el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange"
+        <el-table :data="dataList" highlight-current-row v-loading="listLoading" @selection-change="selsChange"
                   style="width: 100%;">
             <template v-for="config in columnsConfig">
                 <el-table-column :type="config.type" :prop="config.prop" :min-width="config.width"
@@ -42,30 +42,17 @@
         <!--编辑界面-->
         <el-dialog title="编辑" v-model="editFormVisible" :close-on-click-modal="false">
             <el-form :model="editForm" label-width="80px" :rules="editFormRules" ref="editForm">
-                <el-form-item label="姓名" prop="name">
+                <el-form-item label="机构名称" prop="name">
                     <el-input v-model="editForm.name" auto-complete="off"></el-input>
                 </el-form-item>
-                <el-form-item label="性别">
-                    <el-radio-group v-model="editForm.sex">
-                        <el-radio class="radio" :label="1">男</el-radio>
-                        <el-radio class="radio" :label="0">女</el-radio>
-                    </el-radio-group>
-                </el-form-item>
-                <el-form-item label="年龄">
-                    <el-input-number v-model="editForm.age" :min="0" :max="200"></el-input-number>
-                </el-form-item>
-                <el-form-item label="生日">
-                    <el-date-picker type="date" placeholder="选择日期" v-model="editForm.birth"></el-date-picker>
-                </el-form-item>
-                <el-form-item label="地址">
-                    <el-input type="textarea" v-model="editForm.addr"></el-input>
+                <el-form-item label="上级机构" prop="parent">
+                    <el-input v-model="editForm.parent" auto-complete="off"></el-input>
                 </el-form-item>
                 <el-form-item label="排序">
                     <el-input type="number" v-model="editForm.sortNo" :min="0" :max="200"></el-input>
                 </el-form-item>
                 <el-form-item label="状态">
-                    <el-switch v-model="editForm.status" active-color="#13ce66"
-                               inactive-color="#ff4949"></el-switch>
+                    <el-switch v-model="editForm.status"  active-text="有效" inactive-text="无效"></el-switch>
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
@@ -77,30 +64,17 @@
         <!--新增界面-->
         <el-dialog title="新增" v-model="addFormVisible" :close-on-click-modal="false">
             <el-form :model="addForm" label-width="80px" :rules="addFormRules" ref="addForm">
-                <el-form-item label="姓名" prop="name">
+                <el-form-item label="机构名称" prop="name">
                     <el-input v-model="addForm.name" auto-complete="off"></el-input>
                 </el-form-item>
-                <el-form-item label="性别">
-                    <el-radio-group v-model="addForm.sex">
-                        <el-radio class="radio" :label="1">男</el-radio>
-                        <el-radio class="radio" :label="0">女</el-radio>
-                    </el-radio-group>
-                </el-form-item>
-                <el-form-item label="年龄">
-                    <el-input-number v-model="addForm.age" :min="0" :max="200"></el-input-number>
-                </el-form-item>
-                <el-form-item label="生日">
-                    <el-date-picker type="date" placeholder="选择日期" v-model="addForm.birth"></el-date-picker>
-                </el-form-item>
-                <el-form-item label="地址">
-                    <el-input type="textarea" v-model="addForm.addr"></el-input>
+                <el-form-item label="上级机构" prop="parent">
+                    <el-input v-model="addForm.parent" auto-complete="off"></el-input>
                 </el-form-item>
                 <el-form-item label="排序">
-                    <el-input type="number" v-model="editForm.sortNo" :min="0" :max="200"></el-input>
+                    <el-input type="number" v-model="addForm.sortNo" :min="0" :max="200"></el-input>
                 </el-form-item>
                 <el-form-item label="状态">
-                    <el-switch v-model="editForm.status" active-color="#13ce66"
-                               inactive-color="#ff4949"></el-switch>
+                    <el-switch v-model="addForm.status"  active-text="有效" inactive-text="无效"></el-switch>
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">

@@ -288,21 +288,19 @@ export default {
 
 
         //获取网上展馆作者列表
-        mock.onGet('http://localhost:8080/unit/').reply(config => {
-            console.log("config--------------" + JSON.stringify(config));
+        mock.onGet('/unit/').reply(config => {
             let {page, name} = config.params;
             let mockUnits = _Units.filter(unit => {
                 if (name && unit.name.indexOf(name) == -1) return false;
                 return true;
             });
-
             let total = mockUnits.length;
             mockUnits = mockUnits.filter((u, index) => index < pageSize * page && index >= pageSize * (page - 1));
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
                     resolve([200, {
                         total: total,
-                        units: mockUnits
+                        dataList: mockUnits
                     }]);
                 }, 1000);
             });
