@@ -23,7 +23,7 @@ export default {
             }],
             operations: [{
                 label: "查询",
-                method: "getUsers()",
+                method: "getDataList()",
                 btnType: "primary",
                 icon: "el-icon-circle-plus"
             }, {
@@ -88,7 +88,12 @@ export default {
         },
         handleCurrentChange(val) {
             this.page = val;
-            this.getUsers();
+            this.getDataList();
+        },
+
+
+        formatStatus: function (row, column) {
+            return row.status == "1" ? '有效' : row.status == '0' ? '无效' : '未知';
         },
         /**
          * 获取数据表列配置
@@ -123,18 +128,12 @@ export default {
                     "label": "排序",
                     "width": "120",
                     "sortable": true
-                }, {
-                    "type": "",
-                    "prop": "status",
-                    "label": "状态",
-                    "width": "120",
-                    "sortable": true
                 }];
         },
 
 
         //获取用户列表
-        getUsers() {
+        getDataList() {
             let para = {
                 page: this.page,
                 name: this.filters.name
@@ -161,7 +160,7 @@ export default {
                         message: '删除成功',
                         type: 'success'
                     });
-                    this.getUsers();
+                    this.getDataList();
                 });
             }).catch(() => {
 
@@ -201,7 +200,7 @@ export default {
                             });
                             this.$refs['editForm'].resetFields();
                             this.editFormVisible = false;
-                            this.getUsers();
+                            this.getDataList();
                         });
                     });
                 }
@@ -225,7 +224,7 @@ export default {
                             });
                             this.$refs['addForm'].resetFields();
                             this.addFormVisible = false;
-                            this.getUsers();
+                            this.getDataList();
                         });
                     });
                 }
@@ -250,7 +249,7 @@ export default {
                         message: '删除成功',
                         type: 'success'
                     });
-                    this.getUsers();
+                    this.getDataList();
                 });
             }).catch(() => {
 
@@ -258,7 +257,7 @@ export default {
         }
     },
     mounted() {
-        this.getUsers();
+        this.getDataList();
         this.getColumnsConfig();
     }
 }
