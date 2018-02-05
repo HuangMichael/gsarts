@@ -12,6 +12,7 @@ import Unit from '../components/index/views/unit/index.vue'
 import Columns from '../components/index/views/columns/index.vue'
 import Content from '../components/index/views/content/index.vue'
 import RegAudit from '../components/index/views/regAudit/index.vue'
+import AuthGrant from '../components/index/views/authGrant/index.vue'
 import Member from '../components/index/views/member/index.vue'
 import MemberWorks from '../components/index/views/memberWorks/index.vue'
 import PavilionAuthor from '../components/index/views/pavilionAuthor/index.vue'
@@ -56,7 +57,8 @@ const routers = new VueRouter({
                 {path: '/unit', component: Unit, name: '单位管理'},
                 {path: '/user', component: User, name: '用户管理'},
                 {path: '/role', component: Role, name: '角色管理'},
-                {path: '/regAudit', component: RegAudit, name: '注册审核'}
+                {path: '/regAudit', component: RegAudit, name: '注册审核'},
+                {path: '/auth', component: AuthGrant, name: '系统授权'}
             ]
         },
         // {
