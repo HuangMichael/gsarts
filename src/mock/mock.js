@@ -1,4 +1,5 @@
 import axios from 'axios';
+import qs from 'qs';
 import MockAdapter from 'axios-mock-adapter';
 import {LoginUsers, Users} from './data/user';
 import {Roles} from './data/role';
@@ -370,6 +371,26 @@ export default {
                 age: age,
                 birth: birth,
                 sex: sex
+            });
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve([200, {
+                        code: 200,
+                        msg: '新增成功'
+                    }]);
+                }, 500);
+            });
+        });
+
+        //新增用户
+        mock.onPut('http://localhost:8080/api/unit/save').reply(config => {
+            console.log("config.params----------" + JSON.stringify(config.params));
+            let {name, parent, sortNo, status} = config.params;
+            _Units.push({
+                name: name,
+                parent: parent,
+                sortNo: sortNo,
+                status: status
             });
             return new Promise((resolve, reject) => {
                 setTimeout(() => {

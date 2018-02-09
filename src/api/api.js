@@ -38,6 +38,19 @@ export const getUnitList = params => {
 };
 
 
+
+/**
+ *
+ * @param params 新增单位信息
+ * @returns {AxiosPromise}
+ */
+export const addUnit = params => {
+    console.log("params---------------" + JSON.stringify(params));
+    return axios.post(`/unit/save`, {params: params});
+};
+
+
+
 /**
  *
  * @param params
@@ -97,6 +110,12 @@ export const batchRemoveUser = params => {
 export const editUser = params => {
     return axios.get(`${base}/user/edit`, {params: params});
 };
+
+
+export const addUint = params => {
+    return axios.put(`/unit/add`, {params: params});
+};
+
 
 export const addUser = params => {
     return axios.get(`${base}/user/add`, {params: params});

@@ -2,9 +2,8 @@
  * Created by huangbin on 2018/1/26.
  */
 
-import util from 'common/js/util'
-import axios  from 'axios'
-import {getUnitList, removeUser, batchRemoveUser, editUser, addUser} from 'api/api';
+import axios from 'axios'
+import {getUnitList, removeUnit, batchRemoveUnit, editUnit, addUnit} from 'api/api';
 
 export default {
     data() {
@@ -156,6 +155,13 @@ export default {
         },
         //显示新增界面
         handleAdd: function () {
+            this.addFormVisible = true;
+            this.addForm = {
+                name: '',
+                parent: "甘肃文联",
+                sortNo: 0,
+                status: '1'
+            };
 
         },
         //编辑
@@ -164,7 +170,38 @@ export default {
         },
         //新增
         addSubmit: function () {
+            this.$refs.addForm.validate((valid) => {
+                if (valid) {
+                    this.$confirm('确认提交吗？', '提示', {}).then(() => {
+                        this.addLoading = true;
 
+                        let unit = {
+                            unit: this.addForm
+
+                        };
+
+                        console.log("this.addForm------------" + JSON.stringify(this.addForm));
+
+                        let para = Object.assign({}, unit);
+                        console.log("para------------" + JSON.stringify(para));
+
+
+                        axios.put('http://localhost:8080/api/unit/save', {unit: unit});
+
+
+                        // addUnit(para).then((res) => {
+                        //     this.addLoading = false;
+                        //     this.$message({
+                        //         message: '提交成功',
+                        //         type: 'success'
+                        //     });
+                        //     this.$refs['addForm'].resetFields();
+                        //     this.addFormVisible = false;
+                        //     this.getDataList();
+                        // });
+                    });
+                }
+            });
         },
         selsChange: function (sels) {
 
