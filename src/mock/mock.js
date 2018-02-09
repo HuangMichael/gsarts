@@ -291,8 +291,11 @@ export default {
         mock.onGet('/unit/').reply(config => {
             let {page, name} = config.params;
             let mockUnits = _Units.filter(unit => {
-                if (name && unit.name.indexOf(name) == -1) return false;
-                return true;
+                if (name && unit.name.indexOf(name) == -1) {
+                    return false;
+                } else {
+                    return true;
+                }
             });
             let total = mockUnits.length;
             mockUnits = mockUnits.filter((u, index) => index < pageSize * page && index >= pageSize * (page - 1));
