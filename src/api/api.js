@@ -9,9 +9,7 @@ export const requestLogin = params => {
     return axios.post(`${base}/login`, params).then(res => res.data);
 };
 
-export const getUserList = params => {
-    return axios.get('/user/', {params: params});
-};
+
 
 //真实环境时，禁掉mock，请求真实后台地址
 export const getUserList1 = params => {
@@ -36,6 +34,19 @@ export const getUserListPage = params => {
 export const getUnitList = params => {
     return axios.get('/unit/', {params: params});
 };
+
+
+
+
+/**
+ *
+ * @param params
+ * @returns {AxiosPromise}
+ */
+export const getUserList = params => {
+    return axios.get('/user/', {params: params});
+};
+
 
 
 

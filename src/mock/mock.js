@@ -310,6 +310,29 @@ export default {
             });
         });
 
+
+        //获取用户列表
+        mock.onGet('/user/').reply(config => {
+            let {page, name} = config.params;
+            let mockUsers = _Users.filter(user => {
+                if (name && user.name.indexOf(name) == -1) {
+                    return false;
+                } else {
+                    return true;
+                }
+            });
+            let total = mockUsers.length;
+            mockUsers = mockUsers.filter((u, index) => index < pageSize * page && index >= pageSize * (page - 1));
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve([200, {
+                        total: total,
+                        dataList: mockUsers
+                    }]);
+                }, 1000);
+            });
+        });
+
         //删除用户
         mock.onGet('/user/remove').reply(config => {
             let {id} = config.params;
